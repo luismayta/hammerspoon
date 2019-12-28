@@ -66,16 +66,11 @@ repos:
       - id: detect-private-key
         files: ^(?!\.?git-crypt)
       - id: check-merge-conflict
-      - id: trailing-whitespace
-        files: ^tf|-|\.(py|tfvars|tf|tfenv|env|yml|yaml|pem|key|mock)$
-      - id: end-of-file-fixer
-        files: ^tf|-|\.(py|env|yml|yaml|pem|key|mock)$
       - id: check-added-large-files
-        files: ^tf|-|\.(py|env|yml|yaml)$
+        files: ^tf|-|\.(py|env|yml|yaml|js|jsx|ts|tsx)$
       - id: check-case-conflict
       - id: check-json
       - id: check-xml
-      - id: check-yaml
       - id: check-case-conflict
       - id: check-byte-order-marker
       - id: check-ast
@@ -84,15 +79,8 @@ repos:
       - id: detect-aws-credentials
       - id: requirements-txt-fixer
       - id: check-symlinks
-      - id: name-tests-test
-        exclude: (src/tests/steps/*)
-        args:
-          - --django
       - id: file-contents-sorter
       - id: fix-encoding-pragma
-      - id: sort-simple-yaml
-      - id: mixed-line-ending
-        fix: lr
       - id: check-executables-have-shebangs
   - repo: https://github.com/asottile/blacken-docs
     rev: v1.3.0
