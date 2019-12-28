@@ -1,5 +1,5 @@
-require("core.extensions")
-local hotkey = require('core.hotkey')
+require("src.core.extensions")
+local hotkey = require('src.core.hotkey')
 hotkey.bindWithCtrlAlt("a", "Load Atom", launchOrCycleFocus("Atom"))
 -- hotkey.bindWithCtrlAlt("e", "Load Emacs", launchOrCycleFocus("Emacs"))
 hotkey.bindWithCtrlAlt("c", "Load Calendar", launchOrCycleFocus("Calendar"))
