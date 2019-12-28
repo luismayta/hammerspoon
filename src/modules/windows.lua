@@ -1,5 +1,5 @@
-require("core.extensions")
-local hotkey = require("core.hotkey")
+require("src.core.extensions")
+local hotkey = require("src.core.hotkey")
 
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
