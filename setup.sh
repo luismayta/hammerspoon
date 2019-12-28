@@ -34,6 +34,7 @@ hammerspoon::install::dependences() {
     hash git >/dev/null 2>&1 || {
         brew install git
     }
+
 }
 
 # hammerspoon::install - install hammerspoon app
@@ -62,7 +63,7 @@ hammerspoon::post_install() {
 
   message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
 
-  env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" "${HAMMERSPOON_ROOT_PATH}" || {
+  env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
     message_error "git clone of hammerspoon repo failed."
   }
 
