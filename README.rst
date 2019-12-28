@@ -38,12 +38,12 @@ enjoy all the goodies of this configuration.
 via curl
 ~~~~~~~~
 
-``bash -c "$(curl -fsSL https://rebrand.ly/hoy4pz)"``
+``bash -c "$(curl -fsSL https://rebrand.ly/doms02)"``
 
 via wget
 ~~~~~~~~
 
-``bash -c "$(wget https://rebrand.ly/hoy4pz -O -)"``
+``bash -c "$(wget https://rebrand.ly/doms02 -O -)"``
 
 
 Quick Start
