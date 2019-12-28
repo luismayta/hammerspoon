@@ -12,17 +12,17 @@ isWindow      = uielement.isWindow
 local events = hs.uielement.watcher
 
 appEvents = {
-   events.mainWindowChanged,
-   events.focusedWindowChanged,
-   events.windowCreated,
-   events.applicationActivated,
-   events.applicationDeactivated
+  events.mainWindowChanged,
+  events.focusedWindowChanged,
+  events.windowCreated,
+  events.applicationActivated,
+  events.applicationDeactivated
 }
 
 windowEvents = {
-   events.windowCreated,
-   events.focusedWindowChanged,
-   events.windowMoved
+  events.windowCreated,
+  events.focusedWindowChanged,
+  events.windowMoved
 }
 
 function elementType(element)

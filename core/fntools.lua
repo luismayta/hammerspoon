@@ -133,8 +133,8 @@ end
 
 --- Reconfigure volume.
 -- @name reconfigVolume
--- @param volume number 
+-- @param volume number
 -- @return null
 function reconfigVolume(volume)
-   hs.audiodevice.defaultOutputDevice():setVolume(volume)
+  hs.audiodevice.defaultOutputDevice():setVolume(volume)
 end

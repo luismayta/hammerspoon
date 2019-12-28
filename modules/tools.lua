@@ -3,10 +3,10 @@ local hotkey = require("core.hotkey")
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
 Install:andUse(
-   "ModalMgr",
-   {
+  "ModalMgr",
+  {
       loglevel = 'debug',
-   }
+  }
 )
 
 -- Install:andUse(
@@ -38,27 +38,27 @@ Install:andUse(
 -- )
 
 Install:andUse(
-   "Caffeine", {
+  "Caffeine", {
       start = true,
       hotkeys = {
-         toggle = { hotkey.hyper, "1" }
+        toggle = { hotkey.hyper, "1" }
       },
 })
 
 
 Install:andUse(
-   "HeadphoneAutoPause",
-   {
+  "HeadphoneAutoPause",
+  {
       start = true
-   }
+  }
 )
 
 Install:andUse(
-   "ReloadConfiguration",
-   {
+  "ReloadConfiguration",
+  {
       start = true,
       hotkeys = {
-         reloadConfiguration = { hotkey.hyper, "0" }
+        reloadConfiguration = { hotkey.hyper, "0" }
       },
-   }
+  }
 )
