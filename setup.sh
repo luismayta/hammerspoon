@@ -10,8 +10,8 @@ HAMMERSPOON_REPO_HTTPS="https://github.com/luismayta/hammerspoon.git"
 HAMMERSPOON_ROOT_PATH=~/.hammerspoon
 
 message_error() {
-    printf "${RED}%s${NORMAL}\n" "[ERROR]: ${1}"
-    exit 1
+  printf "${RED}%s${NORMAL}\n" "[ERROR]: ${1}"
+  exit 1
 }
 
 message_info() {
@@ -19,7 +19,7 @@ message_info() {
 }
 
 message_warning() {
-    printf "${YELLOW}%s${NORMAL}\n" "[WARNING]: ${1}"
+  printf "${YELLOW}%s${NORMAL}\n" "[WARNING]: ${1}"
 }
 
 message_success() {
@@ -56,34 +56,35 @@ hammerspoon::install() {
 }
 
 hammerspoon::post_install() {
+  # TODO refactor if else
   if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
     message_warning "You already have ${HAMMERSPOON_ROOT_PATH} directory."
     message_warning "You have to remove ${HAMMERSPOON_ROOT_PATH} if you want to re-install."
-    exit 0
+  else
+
+    # Prevent the cloned repository from having insecure permissions. Failing to do
+    # so causes compinit() calls to fail with "command not found: compdef" errors
+    # for users with insecure umasks (e.g., "002", allowing group writability). Note
+    # that this will be ignored under Cygwin by default, as Windows ACLs take
+    # precedence over umasks except for filesystems mounted with option "noacl".
+    umask g-w,o-w
+
+    message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
+
+    env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
+      message_error "git clone of hammerspoon repo failed."
+    }
+
+    message_info "Looking for an existing hammerspoon config..."
+    if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
+      message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
+      message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+      mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+    fi
+
+    message_info "Keep calm and use Hammerspoon!"
+
   fi
-
-  # Prevent the cloned repository from having insecure permissions. Failing to do
-  # so causes compinit() calls to fail with "command not found: compdef" errors
-  # for users with insecure umasks (e.g., "002", allowing group writability). Note
-  # that this will be ignored under Cygwin by default, as Windows ACLs take
-  # precedence over umasks except for filesystems mounted with option "noacl".
-  umask g-w,o-w
-
-  message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
-
-  env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
-    message_error "git clone of hammerspoon repo failed."
-  }
-
-  message_info "Looking for an existing hammerspoon config..."
-  if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
-    message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
-    message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-    mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-  fi
-
-  message_info "Keep calm and use Hammerspoon!"
-
 }
 
 if [ ! -d "/Applications/Hammerspoon.app" ]; then
