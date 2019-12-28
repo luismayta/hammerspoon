@@ -3,8 +3,8 @@ local hotkey = require('core.hotkey')
 local module = {}
 
 function module.toggleDoNotDisturb()
-   -- check if enabled
-   local _, res = hs.applescript.applescript([[
+  -- check if enabled
+  local _, res = hs.applescript.applescript([[
     tell application "System Events"
       tell application process "SystemUIServer"
         tell (every menu bar whose title of menu bar item 1 contains "Notification")
@@ -14,25 +14,25 @@ function module.toggleDoNotDisturb()
     end tell
   ]])
 
-   local isEnabled = string.match(res[1], 'Do Not Disturb')
-   local afterTime = isEnabled and 0.0 or 2.0
+  local isEnabled = string.match(res[1], 'Do Not Disturb')
+  local afterTime = isEnabled and 0.0 or 2.0
 
-   -- is not enabled, will be enabled
-   if not isEnabled then
+  -- is not enabled, will be enabled
+  if not isEnabled then
       pomodor.enable()
       hs.notify.new(
-         {
+        {
             title        = 'Do Not Disturb',
             subTitle     = 'Enabled',
-         }
+        }
       ):send()
-   end
+  end
 
-   -- toggle, wait a bit if we've send notification
-   hs.timer.doAfter(
+  -- toggle, wait a bit if we've send notification
+  hs.timer.doAfter(
       afterTime,
       function()
-         hs.applescript.applescript([[
+        hs.applescript.applescript([[
       tell application "System Events"
         option key down
         tell application process "SystemUIServer"
@@ -46,23 +46,23 @@ function module.toggleDoNotDisturb()
 
         -- is enabled, was disabled
         if isEnabled then
-           pomodor.disable()
-           hs.notify.new(
+          pomodor.disable()
+          hs.notify.new(
               {
-                 title        = 'Do Not Disturb',
-                 subTitle     = 'Disabled',
+                title        = 'Do Not Disturb',
+                subTitle     = 'Disabled',
               }
-           ):send()
+          ):send()
         end
       end
-   )
+  )
 end
 
 
 function module.init()
-   hotkey.bindWithCtrlAlt(
+  hotkey.bindWithCtrlAlt(
       "w", "Toggle Work", module.toggleDoNotDisturb
-   )
+  )
 end
 
 module.init()

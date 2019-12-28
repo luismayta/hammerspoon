@@ -72,14 +72,14 @@ hammerspoon::post_install() {
     message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
 
     env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
-      message_error "git clone of hammerspoon repo failed."
+    message_error "git clone of hammerspoon repo failed."
     }
 
     message_info "Looking for an existing hammerspoon config..."
     if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
-      message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
-      message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-      mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+        message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
+        message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+        mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
     fi
 
     message_info "Keep calm and use Hammerspoon!"
