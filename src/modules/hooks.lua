@@ -1,5 +1,5 @@
-require("core.fntools")
-local settings = require('core.config')
+require("src.core.fntools")
+local settings = require('src.core.config')
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
 
