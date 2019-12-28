@@ -4,39 +4,39 @@ local hotkey = require("core.hotkey")
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
 Install:andUse(
-   "ModalMgr",
-   {
+  "ModalMgr",
+  {
       loglevel = 'debug',
-   }
+  }
 )
 
 Install:andUse(
-   "WindowHalfsAndThirds",
-   {
+  "WindowHalfsAndThirds",
+  {
       config = {
-         use_frame_correctness = true
+        use_frame_correctness = true
       },
       hotkeys = 'default'
-   }
+  }
 )
 
 Install:andUse(
-   "WindowScreenLeftAndRight",
-   {
+  "WindowScreenLeftAndRight",
+  {
       hotkeys = 'default'
-   }
+  }
 )
 
 Install:andUse(
-   "WindowGrid",
-   {
+  "WindowGrid",
+  {
       config = { gridGeometries = { { "6x4" } } },
       hotkeys = {show_grid = {hotkey.hyper, "g"}},
       start = true
-   }
+  }
 )
 hotkey.bindWithAlt(
-   'm', 'Full Screen', fullScreenCurrent
+  'm', 'Full Screen', fullScreenCurrent
 )
 -- hs.hotkey.bind(hyper, "D", screenToRight)
 -- hs.hotkey.bind(hyper, "A", screenToLeft)

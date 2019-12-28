@@ -12,7 +12,7 @@ Install:andUse("URLDispatcher",
                 { "https?://bitbucket.org/dashboard/overview",settings.DefaultBrowser },
                 { "https?://github.com", settings.DefaultBrowser },
             },
-            default_handler = DefaultBrowser
+            default_handler = settings.DefaultBrowser
         },
         start = true
     }

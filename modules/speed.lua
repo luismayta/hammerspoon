@@ -5,12 +5,12 @@ speedBar:setIcon(hs.image.imageFromPath('assets/speed/down.ico'):setSize({ w = 2
 
 local interface = hs.network.primaryInterfaces();
 if interface then
-   local netstat_down = 'netstat -ibn | grep -e ' .. interface .. ' -m 1 | awk \'{print $7}\''
-   local netstat_up = 'netstat -ibn | grep -e ' .. interface .. ' -m 1 | awk \'{print $10}\''
-   local prev_speed_down = hs.execute(netstat_down)
-   local prev_speed_up = hs.execute(netstat_up)
+  local netstat_down = 'netstat -ibn | grep -e ' .. interface .. ' -m 1 | awk \'{print $7}\''
+  local netstat_up = 'netstat -ibn | grep -e ' .. interface .. ' -m 1 | awk \'{print $10}\''
+  local prev_speed_down = hs.execute(netstat_down)
+  local prev_speed_up = hs.execute(netstat_up)
 
-   hs.timer.doEvery(
+  hs.timer.doEvery(
       1, function()
             speed_down = hs.execute(netstat_down)
             speed_up = hs.execute(netstat_up)
@@ -20,17 +20,17 @@ if interface then
             prev_speed_up = speed_up
             speedBar:setTitle(speed_down_show)
             speedBar:setTooltip('UP:'..speed_up_show..', DOWN:'..speed_down_show)
-         end
-   )
+        end
+  )
 
-   function format_show(diff)
+  function format_show(diff)
       if diff/1024 > 1024 then
-         return trim(string.format("%6.2f MB/s", diff/1024/1024))
+        return trim(string.format("%6.2f MB/s", diff/1024/1024))
       end
       return trim(string.format("%6.2f KB/s", diff/1024))
-   end
+  end
 
-   function trim (s)
+  function trim (s)
       return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
-   end
+  end
 end
