@@ -1,7 +1,7 @@
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.repos.doiken = {
-   url = "https://github.com/doiken/Spoons",
-   desc = "doiken's spoon repository",
+  url = "https://github.com/doiken/Spoons",
+  desc = "doiken's spoon repository",
 }
 require('modules.default')
 require('modules.memory')
@@ -12,5 +12,6 @@ require('modules.windows')
 require('modules.switcher')
 require('modules.notification_center')
 require('modules.wifi')
+require('modules.hooks')
 require('modules.browser')
 require('modules.apps')
