@@ -1,4 +1,4 @@
-local strkit = require('core.strkit')
+local strkit = require('src.core.strkit')
 
 hotkey = {
   registeredHotkey = {},

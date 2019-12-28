@@ -1,5 +1,5 @@
-local pomodor = require('modules.pomodoor')
-local hotkey = require('core.hotkey')
+local pomodor = require('src.modules.pomodoor')
+local hotkey = require('src.core.hotkey')
 local module = {}
 
 function module.toggleDoNotDisturb()
