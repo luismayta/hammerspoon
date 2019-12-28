@@ -213,7 +213,7 @@ function mouseHighlight()
   result(mouseCircleTimer, "stop")
 
   -- Get the current co-ordinates of the mouse pointer
-  mousepoint = hs.mouse.get()
+  mousepoint = hs.mouse.getAbsolutePosition()
 
   -- Prepare a big circle around the mouse pointer
   mouseCircle = hs.drawing.circle(hs.geometry.rect(mousepoint.x-40, mousepoint.y-40, 85, 85))
