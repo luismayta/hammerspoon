@@ -1,4 +1,4 @@
-local hotkey = require("core.hotkey")
+local hotkey = require("src.core.hotkey")
 
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall

@@ -1,4 +1,4 @@
-require("core.fntools")
+require("src.core.fntools")
 
 partial = hs.fnutils.partial
 sequence = hs.fnutils.sequence
