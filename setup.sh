@@ -35,6 +35,14 @@ hammerspoon::install::dependences() {
         brew install git
     }
 
+    hash curl >/dev/null 2>&1 || {
+        brew install curl
+    }
+
+    hash wget >/dev/null 2>&1 || {
+        brew install wget
+    }
+
 }
 
 # hammerspoon::install - install hammerspoon app
