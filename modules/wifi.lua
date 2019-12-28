@@ -1,5 +1,6 @@
 require("core.fntools")
 local hotkey = require('core.hotkey')
+local settings = require('core.config')
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
 
@@ -17,36 +18,36 @@ Install:andUse(
                to = "Evilcorp",
                fn = function(_, _, prev_ssid, new_ssid)
                   hs.fnutils.partial(reconfigVolume, 80)
-                  hs.execute("networksetup -setdnsservers Wi-Fi empty")
-                  hs.execute("networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4 1.1.1.1 1.0.0.1")
+                  hs.execute(settings.DnsEmpty)
+                  hs.execute(settings.DnsCloudflare)
                end
             },
             {
                from = "ulwifiT",
                fn = function(_, _, prev_ssid, new_ssid)
                   hs.fnutils.partial(reconfigVolume, 25)
-                  hs.execute("networksetup -setdnsservers Wi-Fi empty")
-                  hs.execute("networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4 1.1.1.1 1.0.0.1")
+                  hs.execute(settings.DnsEmpty)
+                  hs.execute(settings.DnsCloudflare)
                end
             },
             {
                from = "ulwifi",
                fn = function(_, _, prev_ssid, new_ssid)
                   hs.fnutils.partial(reconfigVolume, 25)
-                  hs.execute("networksetup -setdnsservers Wi-Fi empty")
-                  hs.execute("networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4 1.1.1.1 1.0.0.1")
+                  hs.execute(settings.DnsEmpty)
+                  hs.execute(settings.DnsCloudflare)
                end
             },
             {
                to = "ulwifiT",
                fn = function(_, _, prev_ssid, new_ssid)
-                  hs.execute("networksetup -setdnsservers Wi-Fi empty")
+                  hs.execute(settings.DnsEmpty)
                end
             },
             {
                to = "ulwifi",
                fn = function(_, _, prev_ssid, new_ssid)
-                  hs.execute("networksetup -setdnsservers Wi-Fi empty")
+                  hs.execute(settings.DnsEmpty)
                end
             },
             {
@@ -57,15 +58,15 @@ Install:andUse(
                to = "VIPAC-INVITADOS",
                fn = function(_, _, prev_ssid, new_ssid)
                   hs.fnutils.partial(reconfigVolume, 50)
-                  hs.execute("networksetup -setdnsservers Wi-Fi empty")
+                  hs.execute(settings.DnsEmpty)
                end
             },
             {
                from = "VIPAC-INVITADOS",
                fn = function(_, _, prev_ssid, new_ssid)
                   hs.fnutils.partial(reconfigVolume, 25)
-                  hs.execute("networksetup -setdnsservers Wi-Fi empty")
-                  hs.execute("networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4 1.1.1.1 1.0.0.1")
+                  hs.execute(settings.DnsEmpty)
+                  hs.execute(settings.DnsCloudflare)
                end
             },
          }
