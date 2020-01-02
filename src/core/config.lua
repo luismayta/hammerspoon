@@ -19,6 +19,43 @@ config.browser = {
   safari = 'com.apple.Safari',
 }
 
+-- Specify Spoons which will be loaded
+config.spoons = {
+  {
+    name="Caffeine",
+    settings ={
+      start = true,
+      hotkeys = {
+        toggle = { hotkey.hyper, "1" }
+      },
+    }
+  },
+  {
+    name="HeadphoneAutoPause",
+    settings ={
+      start = true,
+    }
+  },
+  {
+    name="ReloadConfiguration",
+    settings ={
+      start = true,
+      hotkeys = {
+        reloadConfiguration = { hotkey.hyper, "0" }
+      },
+    }
+  },
+  {
+    name="CountDown"
+  },
+  {
+    name="FnMate"
+  },
+  {
+    name="WinWin"
+  },
+}
+
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
 config.apps = {
     {key = 'a', name = 'Atom'},
