@@ -1,15 +1,22 @@
 local hotkey = require("src.core.hotkey")
+local config = require("src.core.config")
 
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
 Install:andUse(
   "ModalMgr",
   {
-      loglevel = 'debug',
+    loglevel = 'debug',
   }
 )
 
-Install:andUse("CountDown")
+-- Load those Spoons
+for _, spoon in pairs(config.spoons) do
+  if not spoon:get("settings") then
+    Install:andUse(spoon.name)
+  end
+  Install:andUse(spoon.name, spoon.settings)
+end
 
 --
 -- CountDown
@@ -18,32 +25,3 @@ hs.hotkey.bind(hotkey.cmdHyper, "T", function ()
   hs.notify.new({title="Hammerspoon", informativeText="Starting Timer!"}):send()
   spoon.CountDown:startFor(5)
 end)
-
---
--- Caffeine
---
-Install:andUse(
-  "Caffeine", {
-      start = true,
-      hotkeys = {
-        toggle = { hotkey.hyper, "1" }
-      },
-})
-
-
-Install:andUse(
-  "HeadphoneAutoPause",
-  {
-    start = true
-  }
-)
-
-Install:andUse(
-  "ReloadConfiguration",
-  {
-      start = true,
-      hotkeys = {
-        reloadConfiguration = { hotkey.hyper, "0" }
-      },
-  }
-)
