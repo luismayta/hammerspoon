@@ -19,6 +19,26 @@ config.browser = {
   safari = 'com.apple.Safari',
 }
 
+-- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
+config.apps = {
+    {key = 'a', name = 'Atom'},
+    {key = 'b', name = 'Brave Browser'},
+    {key = 'c', name = 'Calendar'},
+    {key = 'e', name = 'Visual Studio Code'},
+    {key = 'f', name = 'Figma'},
+    {key = 'd', name = 'Dash'},
+    {key = 't', name = 'Alacritty'},
+    {key = 'm', name = 'Spotify'},
+    {key = 'n', name = 'Notion'},
+    {key = 'x', name = 'XCode'},
+    {key = 'i', name = 'Insomnia'},
+    {key = 'k', name = 'Keybase'},
+    {key = 'o', name = 'Finder'},
+    {key = 'r', name = 'Reminders'},
+    {key = 's', name = 'Slack'},
+    {key = 'v', name = 'ActivityMonitor'},
+    {key = 'y', name = 'systempreferences'},
+}
 
 -- -----
 -- Utils
