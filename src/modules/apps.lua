@@ -1,19 +1,11 @@
 require("src.core.extensions")
+
 local hotkey = require('src.core.hotkey')
-hotkey.bindWithCtrlAlt("a", "Load Atom", launchOrCycleFocus("Atom"))
--- hotkey.bindWithCtrlAlt("e", "Load Emacs", launchOrCycleFocus("Emacs"))
-hotkey.bindWithCtrlAlt("c", "Load Calendar", launchOrCycleFocus("Calendar"))
-hotkey.bindWithCtrlAlt("e", "Load Visual Code", launchOrCycleFocus("Visual Studio Code"))
-hotkey.bindWithCtrlAlt("f", "Load Figma", launchOrCycleFocus("Figma"))
-hotkey.bindWithCtrlAlt("d", "Load Dash", launchOrCycleFocus("Dash"))
-hotkey.bindWithCtrlAlt("t", "Load Alacritty", launchOrCycleFocus("Alacritty"))
-hotkey.bindWithCtrlAlt("m", "Load Spotify", launchOrCycleFocus("Spotify"))
-hotkey.bindWithCtrlAlt("n", "Load Notion", launchOrCycleFocus("Notion"))
-hotkey.bindWithCtrlAlt("x", "Load Xcode", launchOrCycleFocus("XCode"))
-hotkey.bindWithCtrlAlt("i", "Load Insomnia", launchOrCycleFocus("Insomnia"))
-hotkey.bindWithCtrlAlt("k", "Load Keybase", launchOrCycleFocus("Keybase"))
-hotkey.bindWithCtrlAlt("o", "Load Finder", launchOrCycleFocus("Finder"))
-hotkey.bindWithCtrlAlt("b", "Load Brave Browser", launchOrCycleFocus("Brave Browser"))
-hotkey.bindWithCtrlAlt("r", "Load Reminders", launchOrCycleFocus("Reminders"))
-hotkey.bindWithCtrlAlt("s", "Load Slack", launchOrCycleFocus("Slack"))
+local config = require('src.core.config')
+
+for _, value in ipairs(config.apps) do
+    if value.name then
+      hotkey.bindWithCtrlAlt(value.key, "Load", launchOrCycleFocus(value.name))
+    end
+end
 hotkey.bindWithCtrlAlt("`", "Load Open", function() os.execute( "open ~" ) end )
