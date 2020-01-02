@@ -23,5 +23,5 @@ end
 --
 hs.hotkey.bind(hotkey.cmdHyper, "T", function ()
   hs.notify.new({title="Hammerspoon", informativeText="Starting Timer!"}):send()
-  spoon.CountDown:startFor(5)
+  spoon.CountDown:startFor(config.countdown.minutes * 60)
 end)
