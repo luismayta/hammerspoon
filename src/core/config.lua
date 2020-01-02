@@ -56,6 +56,11 @@ config.spoons = {
   },
 }
 
+-- Implement settings for countdown
+config.countdown = {
+  minutes = 25
+}
+
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
 config.apps = {
     {key = 'a', name = 'Atom'},
