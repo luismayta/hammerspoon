@@ -31,10 +31,10 @@ pomodoor.var = {
 }
 
 --------------------------------------------------------------------------------
--- pomodor function show status
+-- pomodoor function show status
 --------------------------------------------------------------------------------
-function pomodor.isEnabled()
-  return bool(pomodoor.var.is_active)
+function pomodoor.isEnabled()
+  return pomodoor.var.is_active
 end
 
 --------------------------------------------------------------------------------
