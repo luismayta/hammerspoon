@@ -4,7 +4,6 @@
 -- Configuration variables
 --------------------------------------------------------------------------------
 local pomodoor={}
-
 pomodoor.bar = {
   indicator_height = 0.2, -- ratio from the height of the menubar (0..1)
   indicator_alpha  = 0.3,
@@ -30,6 +29,13 @@ pomodoor.var = {
   time_left        = pomodoor.config.work_period_sec,
   max_time_sec     = pomodoor.config.work_period_sec
 }
+
+--------------------------------------------------------------------------------
+-- pomodor function show status
+--------------------------------------------------------------------------------
+function pomodor.isEnabled()
+  return bool(pomodoor.var.is_active)
+end
 
 --------------------------------------------------------------------------------
 -- Color bar for pomodoor
@@ -104,17 +110,17 @@ function pomodoor.disable()
     pomodoor.var.time_left         = pomodoor.config.work_period_sec
     pomodoor.var.curr_active_type  = "work"
     pom_update_display()
-  elseif (pomodoor.var.disable_count >= 2) then
-    if pom_menu == nil then
-      pomodoor.var.disable_count = 2
-      return
-  end
+    elseif (pomodoor.var.disable_count >= 2) then
+      if pom_menu == nil then
+        pomodoor.var.disable_count = 2
+        return
+    end
 
-  pom_menu:delete()
-  pom_menu = nil
-  pom_timer:stop()
-  pom_timer = nil
-  pomodoor.del_indicators()
+    pom_menu:delete()
+    pom_menu = nil
+    pom_timer:stop()
+    pom_timer = nil
+    pomodoor.del_indicators()
   end
 
   pomodoor.var.disable_count = pomodoor.var.disable_count + 1
