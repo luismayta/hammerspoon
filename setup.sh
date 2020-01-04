@@ -10,20 +10,20 @@ HAMMERSPOON_REPO_HTTPS="https://github.com/luismayta/hammerspoon.git"
 HAMMERSPOON_ROOT_PATH=~/.hammerspoon
 
 message_error() {
-  printf "${RED}%s${NORMAL}\n" "[ERROR]: ${1}"
-  exit 1
+    printf "${RED}%s${NORMAL}\n" "[ERROR]: ${1}"
+    exit 1
 }
 
 message_info() {
-  printf "${BLUE}%s${NORMAL}\n" "[INFO]: ${1}"
+    printf "${BLUE}%s${NORMAL}\n" "[INFO]: ${1}"
 }
 
 message_warning() {
-  printf "${YELLOW}%s${NORMAL}\n" "[WARNING]: ${1}"
+    printf "${YELLOW}%s${NORMAL}\n" "[WARNING]: ${1}"
 }
 
 message_success() {
-  printf "${GREEN}%s${NORMAL}\n" "🍺️ [SUCCESS]: ${1}"
+    printf "${GREEN}%s${NORMAL}\n" "🍺️ [SUCCESS]: ${1}"
 }
 
 hammerspoon::install::dependences() {
@@ -43,6 +43,16 @@ hammerspoon::install::dependences() {
         brew install wget
     }
 
+    hash do-not-disturb-cli >/dev/null 2>&1 || {
+        if type -p yarn > /dev/null; then
+            yarn global add do-not-disturb-cli
+        else
+            mesage_info "Installing yarn"
+            brew install yarn
+            message_success "Installed yarn"
+        fi
+    }
+
 }
 
 # hammerspoon::install - install hammerspoon app
@@ -56,11 +66,11 @@ hammerspoon::install() {
 }
 
 hammerspoon::post_install() {
-  # TODO refactor if else
-  if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
-    message_warning "You already have ${HAMMERSPOON_ROOT_PATH} directory."
-    message_warning "You have to remove ${HAMMERSPOON_ROOT_PATH} if you want to re-install."
-  else
+    # TODO refactor if else
+    if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
+        message_warning "You already have ${HAMMERSPOON_ROOT_PATH} directory."
+        message_warning "You have to remove ${HAMMERSPOON_ROOT_PATH} if you want to re-install."
+    else
 
     # Prevent the cloned repository from having insecure permissions. Failing to do
     # so causes compinit() calls to fail with "command not found: compdef" errors
@@ -84,7 +94,7 @@ hammerspoon::post_install() {
 
     message_info "Keep calm and use Hammerspoon!"
 
-  fi
+    fi
 }
 
 if [ ! -d "/Applications/Hammerspoon.app" ]; then
