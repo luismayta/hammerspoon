@@ -1,4 +1,55 @@
+local logger = require("hs.logger")
+
 local osx = {}
+
+-- debugging
+log = logger.new("functions", "debug")
+
+---------------------------------------------
+-- OS X isDoNotDisturbEnabled
+---------------------------------------------
+function osx.isDoNotDisturbEnabled()
+  local command =
+    'defaults -currentHost read com.apple.notificationcenterui doNotDisturb'
+
+  mode, _, _, _ = hs.execute(command)
+
+  return tonumber(mode) == 1
+end
+
+---------------------------------------------
+-- OS X Toggle Status Notification
+---------------------------------------------
+function osx.toggleDoNotDisturb()
+  local output, status, type, rc = hs.execute('do-not-disturb toggle', true)
+
+  if (not (status == true and type == 'exit' and rc == 0)) then
+    hs.alert("Whoops! Toggling 'Do Not Disturb' failed.")
+
+    local alertDurationInSeconds = 4
+    hs.alert(
+      "Make sure you have sindresorhus/do-not-disturb-cli installed and try again.",
+      hs.alert.defaultStyle,
+      hs.screen.mainScreen(),
+      alertDurationInSeconds
+    )
+  end
+end
+
+---------------------------------------------
+-- OS X Notification SetStatusNotification
+---------------------------------------------
+function osx.setStatusNotification(status)
+
+  local script ="do-not-disturb off"
+  if status == 'enable' then
+    script ="do-not-disturb on"
+  end
+
+  local _, status, exit, code = hs.execute(script, true)
+  log:d(code)
+  return status
+end
 
 ---------------------------------------------
 -- OS X Notification Clear
@@ -22,7 +73,14 @@ function osx.clearNotifications()
         end tell
     end closeNotif
   ]]
-  hs.applescript.applescript(script)
+
+  local response, err = pcall(hs.applescript.applescript(script))
+  if err == true then
+    log:d(err)
+    error(err)
+  end
+  local _, res = response
+  return res
 end
 
 return osx
