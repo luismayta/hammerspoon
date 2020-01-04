@@ -1,3 +1,4 @@
+local hotkey = require("src.core.hotkey")
 config = {
   DnsEmpty= "networksetup -setdnsservers Wi-Fi empty",
   DnsCloudflare= "networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4 1.1.1.1 1.0.0.1",
