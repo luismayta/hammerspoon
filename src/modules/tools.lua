@@ -3,6 +3,7 @@ local config = require("src.core.config")
 
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
+
 Install:andUse(
   "ModalMgr",
   {
@@ -11,11 +12,12 @@ Install:andUse(
 )
 
 -- Load those Spoons
-for _, spoon in pairs(config.spoons) do
-  if not spoon:get("settings") then
-    Install:andUse(spoon.name)
+for _, app in pairs(config.spoons) do
+  if app.settings then
+    Install:andUse(app.name, app.settings)
+  else
+    Install:andUse(app.name)
   end
-  Install:andUse(spoon.name, spoon.settings)
 end
 
 --
