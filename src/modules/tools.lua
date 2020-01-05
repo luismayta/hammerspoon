@@ -1,5 +1,9 @@
 local hotkey = require("src.core.hotkey")
 local config = require("src.core.config")
+local logger = require("hs.logger")
+
+-- debugging
+log = logger.new("tools", "debug")
 
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
@@ -23,7 +27,10 @@ end
 --
 -- CountDown
 --
-hs.hotkey.bind(hotkey.cmdHyper, "T", function ()
-  hs.notify.new({title="Hammerspoon", informativeText="Starting Timer!"}):send()
-  spoon.CountDown:startFor(config.countdown.minutes * 60)
-end)
+local countDown = hs.loadSpoon("CountDown")
+hotkey.bindWithCtrlCmdAlt("t", "countdown",
+  function ()
+    hs.notify.new({title="Hammerspoon", informativeText="Starting Timer!"}):send()
+    countDown:startFor(config.countDown.minutes)
+  end
+)
