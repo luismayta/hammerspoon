@@ -23,6 +23,35 @@ config.browser = {
 -- Specify Spoons which will be loaded
 config.spoons = {
   {
+    name="ModalMgr",
+    settings={
+      loglevel = 'debug',
+    }
+  },
+  {
+    name="WindowGrid",
+    settings={
+      config = { gridGeometries = { { "6x4" } } },
+      hotkeys = {show_grid = {hotkey.hyper, ","}},
+      start = true,
+    }
+  },
+  {
+    name="WindowHalfsAndThirds",
+    settings={
+      config = {
+        use_frame_correctness = true
+      },
+      hotkeys = 'default'
+    }
+  },
+  {
+    name="WindowScreenLeftAndRight",
+    settings={
+      hotkeys = 'default'
+    }
+  },
+  {
     name="Caffeine",
     settings ={
       start = true,
@@ -58,8 +87,8 @@ config.spoons = {
 }
 
 -- Implement settings for countdown
-config.countdown = {
-  minutes = 25
+config.countDown = {
+  minutes = 25 * 60
 }
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
