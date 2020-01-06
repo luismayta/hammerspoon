@@ -95,6 +95,7 @@ config.countDown = {
 config.apps = {
     {key = 'a', name = 'Atom'},
     {key = 'b', name = 'Brave Browser'},
+    {key = 'g', name = 'Google Chrome'},
     {key = 'c', name = 'Calendar'},
     {key = 'e', name = 'Visual Studio Code'},
     {key = 'f', name = 'Figma'},
