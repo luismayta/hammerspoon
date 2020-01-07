@@ -2,6 +2,7 @@ local pomodor = require('src.modules.pomodoor')
 local hotkey = require('src.core.hotkey')
 local logger = require("hs.logger")
 local fn = require("src.core.functions")
+local caffeine = hs.loadSpoon("Caffeine")
 
 local notification = {}
 
@@ -49,6 +50,19 @@ function notification.enable()
   fn.setStatusNotification("enable")
 end
 
+function notification.startWorking()
+  pomodor.enable()
+  caffeine:start()
+  notification.enable()
+end
+
+function notification.stopWorking()
+  pomodor.disable()
+  caffeine:stop()
+  notification.disable()
+end
+
+
 function notification.toggleDoNotDisturb()
   -- check if enabled
   local isEnabled = notification.isEnabled()
@@ -56,14 +70,12 @@ function notification.toggleDoNotDisturb()
 
   if isPomododorEnabled == true then
     log:d("disabled working!")
-    pomodor.disable()
     hs.notify.new(notification.vars.messageDisabled):send()
-    fn.toggleDoNotDisturb()
+    notification.stopWorking()
   else
     log:d("active working!")
-    pomodor.enable()
     hs.notify.new(notification.vars.messageEnabled):send()
-    fn.toggleDoNotDisturb()
+    notification.startWorking()
   end
 end
 
