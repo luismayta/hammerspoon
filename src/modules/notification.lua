@@ -1,31 +1,32 @@
+local mod = {}
+mod.namespace = "notification"
 local pomodor = require('src.modules.pomodoor')
 local hotkey = require('src.core.hotkey')
 local logger = require("hs.logger")
 local fn = require("src.core.functions")
 local caffeine = hs.loadSpoon("Caffeine")
 
-local notification = {}
 
-notification.icon = hs.image.imageFromPath('src/assets/notification/success.png'):setSize({ w = 20, h = 20 })
+mod.icon = hs.image.imageFromPath('src/assets/notification/success.png'):setSize({ w = 20, h = 20 })
 
 -- debugging
 log = logger.new("notification", "debug")
 
-notification.vars = {
+mod.vars = {
   afterTime= 2,
   messageEnabled = {
       title        = 'Start Working with Not Disturb',
       subTitle     = 'Enabled',
-      contentImage = notification.icon,
+      contentImage = mod.icon,
   },
   messageDisabled = {
       title        = 'Do Not Disturb',
       subTitle     = 'Disabled',
-      contentImage = notification.icon,
+      contentImage = mod.icon,
   }
 }
 
-function notification.isEnabled()
+function mod.isEnabled()
   log:d("load is_enabled notification!")
   -- check if enabled
   local _, res = hs.applescript.applescript([[
@@ -42,30 +43,29 @@ function notification.isEnabled()
   return isEnabled
 end
 
-function notification.disable()
+function mod.disable()
   fn.setStatusNotification("disable")
 end
 
-function notification.enable()
+function mod.enable()
   fn.setStatusNotification("enable")
 end
 
-function notification.startWorking()
+function mod.startWorking()
   pomodor.enable()
   caffeine:start()
-  notification.enable()
+  mod.enable()
 end
 
-function notification.stopWorking()
+function mod.stopWorking()
   pomodor.disable()
   caffeine:stop()
-  notification.disable()
+  mod.disable()
 end
 
-
-function notification.toggleDoNotDisturb()
+function mod.toggleDoNotDisturb()
   -- check if enabled
-  local isEnabled = notification.isEnabled()
+  local isEnabled = mod.isEnabled()
   local isPomododorEnabled = pomodor.isEnabled()
 
   if isPomododorEnabled == true then
@@ -79,12 +79,11 @@ function notification.toggleDoNotDisturb()
   end
 end
 
-function notification.init()
-  hotkey.bindWithCtrlAlt(
-      "w", "Toggle Work", notification.toggleDoNotDisturb
-  )
+function mod.init()
+  mod.toggleDoNotDisturb()
 end
 
-notification.init()
+function mod.unload()
+end
 
-return notification
+return mod
