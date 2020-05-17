@@ -7,7 +7,10 @@ BLUE="\033[0;36m"
 NORMAL="\033[0m"
 
 HAMMERSPOON_REPO_HTTPS="https://github.com/luismayta/hammerspoon.git"
-HAMMERSPOON_ROOT_PATH=~/.hammerspoon
+HAMMERSPOON_ROOT_PATH="${HOME}/.hammerspoon"
+HAMMERSPOON_MESSAGE_BREW="Please install brew or use antibody bundle luismayta/zsh-brew branch:develop"
+HAMMERSPOON_MESSAGE_DONE="Keep calm and use Hammerspoon!"
+
 
 message_error() {
     printf "${RED}%s${NORMAL}\n" "[ERROR]: ${1}"
@@ -28,7 +31,7 @@ message_success() {
 
 hammerspoon::install::dependences() {
     if ! type -p brew > /dev/null; then
-        message_warning "Install brew for next also use github.com/luismayta/zsh-brew"
+        message_warning "${HAMMERSPOON_MESSAGE_BREW}"
         return 0
     fi
 
@@ -59,45 +62,39 @@ hammerspoon::install::dependences() {
 
 # hammerspoon::install - install hammerspoon app
 hammerspoon::install() {
-    if type -p brew > /dev/null; then
-        message_info "Install Hammerspoon"
-        brew cask install hammerspoon
-        hammerspoon::post_install
-        message_success "Installed Hammerspoon"
+    if ! type -p brew > /dev/null; then
+        message_warning "${HAMMERSPOON_MESSAGE_BREW}"
+        return
     fi
+    message_info "Install Hammerspoon"
+    brew cask install hammerspoon
+    hammerspoon::post_install
+    message_success "Installed Hammerspoon"
 }
 
+# hammerspoon::post_install - post install hammerspoon settings
 hammerspoon::post_install() {
-    # TODO refactor if else
+    message_info "Looking for an existing hammerspoon config..."
     if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
-        message_warning "You already have ${HAMMERSPOON_ROOT_PATH} directory."
-        message_warning "You have to remove ${HAMMERSPOON_ROOT_PATH} if you want to re-install."
-    else
-
-        # Prevent the cloned repository from having insecure permissions. Failing to do
-        # so causes compinit() calls to fail with "command not found: compdef" errors
-        # for users with insecure umasks (e.g., "002", allowing group writability). Note
-        # that this will be ignored under Cygwin by default, as Windows ACLs take
-        # precedence over umasks except for filesystems mounted with option "noacl".
-        umask g-w,o-w
-
-        message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
-
-        env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
-            message_warning "git clone of hammerspoon repo failed."
-            return
-        }
-
-        message_info "Looking for an existing hammerspoon config..."
-        if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
-            message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
-            message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-            mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-        fi
-
-        message_info "Keep calm and use Hammerspoon!"
-
+        message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
+        message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+        mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
     fi
+    # Prevent the cloned repository from having insecure permissions. Failing to do
+    # so causes compinit() calls to fail with "command not found: compdef" errors
+    # for users with insecure umasks (e.g., "002", allowing group writability). Note
+    # that this will be ignored under Cygwin by default, as Windows ACLs take
+    # precedence over umasks except for filesystems mounted with option "noacl".
+    umask g-w,o-w
+
+    message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
+
+    env git clone --depth=1 "${HAMMERSPOON_REPO_HTTPS}" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
+        message_warning "git clone of hammerspoon repo failed."
+        return
+    }
+
+    message_info "${HAMMERSPOON_MESSAGE_DONE}"
 }
 
 if [ ! -d "/Applications/Hammerspoon.app" ]; then
