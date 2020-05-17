@@ -6,7 +6,7 @@
 version: '3.6'
 services:
   app:
-    image: vimrc-app-test
+    image: hammerspoon-app-test
     environment: &environment
       - STAGE=testing
     build:
