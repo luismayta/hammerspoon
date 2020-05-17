@@ -1,4 +1,4 @@
-FROM python:3.8.0-slim
+FROM equipindustry/python:3.8.0-slim
 
 MAINTAINER Luis Mayta <slovacus@gmail.com>
 
@@ -17,14 +17,8 @@ ENV PACKAGES bash \
   openssl \
   gcc \
   libgdal20 \
-  libev-dev \
-  curl \
-  wget \
-  tar \
-  zsh \
-  jq
+  libev-dev
 
-ENV ZUNIT_VERSION "0.8.2"
 
 COPY Pipfile* /usr/src/
 
@@ -34,13 +28,6 @@ WORKDIR /usr/src/
 # install packages
 RUN apt-get update -y \
   && apt-get install -y ${PACKAGES} --no-install-recommends \
-
-  # revolver
-  && curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver \
-  && chmod +x /usr/local/bin/revolver \
-  # zunit
-  && curl -L https://github.com/zunit-zsh/zunit/releases/download/v${ZUNIT_VERSION}/zunit > /usr/local/bin/zunit \
-  && chmod +x /usr/local/bin/zunit \
 
   # Permissions
   && groupadd -g 500 -r python \
