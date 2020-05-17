@@ -1,13 +1,13 @@
 local hotkey = require("src.core.hotkey")
 config = {
   DnsEmpty= "networksetup -setdnsservers Wi-Fi empty",
-  DnsCloudflare= "networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4 1.1.1.1 1.0.0.1",
+  DnsCloudflare= "networksetup -setdnsservers Wi-Fi 127.0.0.1 1.1.1.1 1.0.0.1",
 }
 
 -- Displays
 config.display = {
   display_laptop = 'Color LCD',
-  display_external = 'ASUS PB238'
+  display_external = 'ASUS PB238',
 }
 
 -- Browsers
@@ -93,24 +93,24 @@ config.countDown = {
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
 config.apps = {
-    {key = 'a', name = 'Atom'},
+    {key = 'a', name = 'Airtable'},
     {key = 'b', name = 'Brave Browser'},
-    {key = 'g', name = 'Google Chrome'},
-    {key = 'c', name = 'Calendar'},
-    {key = 'e', name = 'Visual Studio Code'},
+    {key = 'c', name = 'GoogleCalendar'},
+    {key = 'e', name = 'Emacs'},
     {key = 'f', name = 'Figma'},
-    {key = 'd', name = 'Dash'},
+    {key = 'h', name = 'Whatsapp'},
     {key = 't', name = 'Alacritty'},
     {key = 'm', name = 'Spotify'},
     {key = 'n', name = 'Notion'},
     {key = 'x', name = 'XCode'},
     {key = 'i', name = 'Insomnia'},
+    {key = 'r', name = 'Todoist'},
     {key = 'k', name = 'Keybase'},
     {key = 'o', name = 'Finder'},
-    {key = 'r', name = 'Reminders'},
     {key = 's', name = 'Slack'},
-    {key = 'v', name = 'ActivityMonitor'},
-    {key = 'y', name = 'systempreferences'},
+    {key = 'j', name = 'Jira'},
+    {key = 'v', name = 'Miro - formerly RealtimeBoard'},
+    {key = 'z', name = 'Zoom.us'},
 }
 
 -- -----
