@@ -1,9 +1,9 @@
 FROM python:3.8.0-slim
 
-MAINTAINER Luis Mayta <@slovacus>
+MAINTAINER Luis Mayta <slovacus@gmail.com>
 
 ARG stage
-LABEL NAME vimrc-check-$stage
+LABEL NAME hammerspoon-check-$stage
 
 COPY Pipfile* /usr/src/
 
