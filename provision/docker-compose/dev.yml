@@ -1,18 +1,19 @@
 # Docker Compose
 # https://docs.docker.com/compose/
+
 version: '3.6'
 services:
   # Python
   app:
     environment: &environment
       - STAGE=local
-    image: vimrc-app-dev
+    image: hammerspoon-app-dev
     build:
       args:
         stage: dev
 
   check:
-    image: vimrc-check-dev
+    image: hammerspoon-check-dev
     environment: *environment
     build:
       context: .
