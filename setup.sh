@@ -11,7 +11,7 @@ HAMMERSPOON_ROOT_PATH=~/.hammerspoon
 
 message_error() {
     printf "${RED}%s${NORMAL}\n" "[ERROR]: ${1}"
-    exit 1
+    return 0
 }
 
 message_info() {
@@ -28,7 +28,8 @@ message_success() {
 
 hammerspoon::install::dependences() {
     if ! type -p brew > /dev/null; then
-        message_error "Install brew for next also use github.com/luismayta/zsh-brew"
+        message_warning "Install brew for next also use github.com/luismayta/zsh-brew"
+        return 0
     fi
 
     hash git >/dev/null 2>&1 || {
@@ -43,13 +44,14 @@ hammerspoon::install::dependences() {
         brew install wget
     }
 
+    hash yarn >/dev/null 2>&1 || {
+        brew install yarn
+    }
+
     hash do-not-disturb-cli >/dev/null 2>&1 || {
         if type -p yarn > /dev/null; then
             yarn global add do-not-disturb-cli
-        else
-            mesage_info "Installing yarn"
-            brew install yarn
-            message_success "Installed yarn"
+            return
         fi
     }
 
@@ -72,27 +74,28 @@ hammerspoon::post_install() {
         message_warning "You have to remove ${HAMMERSPOON_ROOT_PATH} if you want to re-install."
     else
 
-    # Prevent the cloned repository from having insecure permissions. Failing to do
-    # so causes compinit() calls to fail with "command not found: compdef" errors
-    # for users with insecure umasks (e.g., "002", allowing group writability). Note
-    # that this will be ignored under Cygwin by default, as Windows ACLs take
-    # precedence over umasks except for filesystems mounted with option "noacl".
-    umask g-w,o-w
+        # Prevent the cloned repository from having insecure permissions. Failing to do
+        # so causes compinit() calls to fail with "command not found: compdef" errors
+        # for users with insecure umasks (e.g., "002", allowing group writability). Note
+        # that this will be ignored under Cygwin by default, as Windows ACLs take
+        # precedence over umasks except for filesystems mounted with option "noacl".
+        umask g-w,o-w
 
-    message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
+        message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
 
-    env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
-    message_error "git clone of hammerspoon repo failed."
-    }
+        env git clone --depth=1 "$HAMMERSPOON_REPO_HTTPS" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
+            message_warning "git clone of hammerspoon repo failed."
+            return
+        }
 
-    message_info "Looking for an existing hammerspoon config..."
-    if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
-        message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
-        message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-        mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-    fi
+        message_info "Looking for an existing hammerspoon config..."
+        if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
+            message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
+            message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+            mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+        fi
 
-    message_info "Keep calm and use Hammerspoon!"
+        message_info "Keep calm and use Hammerspoon!"
 
     fi
 }
