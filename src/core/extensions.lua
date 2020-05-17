@@ -317,56 +317,99 @@ end
 -- Needed to enable cycling of application windows
 lastToggledApplication = ''
 
-function launchOrCycleFocus(applicationName, applicationTitle)
+function launchOrCycleFocus(applicationName)
   return function()
     local nextWindow = nil
     local targetWindow = nil
     local focusedWindow          = hs.window.focusedWindow()
-    local lastToggledApplication = focusedWindow and focusedWindow:application():title()
-
-    -- Note, applicationTitle is optional, and only useful in those
-    -- cases where the name and title are not the same (i.e. Visual Studio Code).
-    if applicationTitle == nil then
-        applicationTitle = applicationName
-    end
+    local lastToggledApplication = focusedWindow and focusedWindow:application():name()
 
     if not focusedWindow then return nil end
-
-    -- save the state of currently focused app
-    appStates:save()
-
-    dbgf('last: %s, current: %s', lastToggledApplication, applicationTitle)
-
-    if lastToggledApplication == applicationTitle then
-      hs.eventtap.keyStroke({"cmd"}, "`")
-      nextWindow = hs.window.focusedWindow()
+    if lastToggledApplication == applicationName then
+      nextWindow = getNextWindow(applicationName, focusedWindow)
+      -- Becoming main means
+      -- * gain focus (although docs say differently?)
+      -- * next call to launchOrFocus will focus the main window <- important
+      -- * when fetching allWindows() from an application mainWindow will be the first one
+      --
+      -- If we have two applications, each with multiple windows
+      -- i.e:
+      --
+      -- Google Chrome: {window1} {window2}
+      -- Firefox:       {window1} {window2} {window3}
+      --
+      -- and we want to move between Google Chrome {window2} and Firefox {window3}
+      -- when pressing the hotkeys for those applications, then using becomeMain
+      -- we cycle until those windows (i.e press hotkey twice for Chrome) have focus
+      -- and then the launchOrFocus will trigger that specific window.
+      nextWindow:becomeMain()
+      nextWindow:focus()
     else
       hs.application.launchOrFocus(applicationName)
     end
 
-    -- this blindly assumed that previous steps have been successful..
-    if nextWindow then -- won't be available when appState empty
+    if nextWindow then
       targetWindow = nextWindow
     else
       targetWindow = hs.window.focusedWindow()
     end
 
     if not targetWindow then
-      dbgf('failed finding a window for application: %s', applicationName)
       return nil
     end
-
-    if appStates:lookup(targetWindow) then
-      dbgf('restoring state of: %s', targetWindow:application():title())
-      appStates:restore(targetWindow)
-    else
-      local windowFrame = targetWindow:frame()
-      hs.mouse.centerOnRect(windowFrame)
-    end
-
-    mouseHighlight()
   end
 end
+
+-- function launchOrCycleFocus(applicationName, applicationTitle)
+--   return function()
+--     local nextWindow = nil
+--     local targetWindow = nil
+--     local focusedWindow          = hs.window.focusedWindow()
+--     local lastToggledApplication = focusedWindow and focusedWindow:application():title()
+
+--     -- Note, applicationTitle is optional, and only useful in those
+--     -- cases where the name and title are not the same (i.e. Visual Studio Code).
+--     if applicationTitle == nil then
+--         applicationTitle = applicationName
+--     end
+
+--     if not focusedWindow then return nil end
+
+--     -- save the state of currently focused app
+--     appStates:save()
+
+--     dbgf('last: %s, current: %s', lastToggledApplication, applicationTitle)
+
+--     if lastToggledApplication == applicationTitle then
+--       hs.eventtap.keyStroke({"cmd"}, "`")
+--       nextWindow = hs.window.focusedWindow()
+--     else
+--       hs.application.launchOrFocus(applicationName)
+--     end
+
+--     -- this blindly assumed that previous steps have been successful..
+--     if nextWindow then -- won't be available when appState empty
+--       targetWindow = nextWindow
+--     else
+--       targetWindow = hs.window.focusedWindow()
+--     end
+
+--     if not targetWindow then
+--       dbgf('failed finding a window for application: %s', applicationName)
+--       return nil
+--     end
+
+--     if appStates:lookup(targetWindow) then
+--       dbgf('restoring state of: %s', targetWindow:application():title())
+--       appStates:restore(targetWindow)
+--     else
+--       local windowFrame = targetWindow:frame()
+--       hs.mouse.centerOnRect(windowFrame)
+--     end
+
+--     mouseHighlight()
+--   end
+-- end
 
 
 
