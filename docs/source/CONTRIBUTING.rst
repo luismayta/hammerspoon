@@ -4,7 +4,7 @@ How To Contribute
 .. contents::
    :local:
 
-Contributions to vimrc are welcome.
+Contributions to hammerspoon are welcome.
 
 Getting Started
 ---------------
@@ -56,13 +56,13 @@ Documentation
 * Use reStructuredText for docstrings and documentation
 * For docstrings, follow :ref:`napoleon:example_google`
 * For documentation pages, follow the strong guidelines from Python with
-   :ref:`pythondev:documenting`
+  :ref:`pythondev:documenting`
 
 .. note::
 
    * Use :file:`.rst` for regular pages
    * Use :file:`.rest` for pages included using ``.. include:: file.rest``
-      (fixes a Sphinx issue that thinks references are duplicated)
+     (fixes a Sphinx issue that thinks references are duplicated)
 
 Testing
 ^^^^^^^
@@ -77,7 +77,7 @@ Run unit tests specified
 
 .. code-block:: bash
 
-   make test run={{path}}
+   make test run={path}
 
 
 Code Submission

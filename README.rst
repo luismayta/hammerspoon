@@ -3,14 +3,16 @@ hammerspoon
 
 |Build Status| |GitHub issues| |GitHub license|
 
+hammerspoon settings
+
 :Version: 0.0.0
 :Web: https://github.com/luismayta/hammerspoon
 :Download: https://github.com/luismayta/hammerspoon
 :Source: https://github.com/luismayta/hammerspoon
-:Keywords: vimrc
+:Keywords: hammerspoon
 
 .. contents:: Table of Contents:
-   :local:
+    :local:
 
 Features
 --------
@@ -58,7 +60,7 @@ Usage
 
 .. code-block:: bash
 
-   λ make setup
+  λ make setup
 
 Support
 -------
@@ -67,7 +69,7 @@ If you want to support this project, i only accept ``IOTA`` :p.
 
 .. code-block:: bash
 
-   Address: FTDCZELEMOQGL9MBWFZENJLFIZUBGMXLFVPRB9HTWYDYPTFKASJCEGJMSAXUWDQC9SJUDMZVIQKACQEEYPEUYLAMMD
+    Address: FTDCZELEMOQGL9MBWFZENJLFIZUBGMXLFVPRB9HTWYDYPTFKASJCEGJMSAXUWDQC9SJUDMZVIQKACQEEYPEUYLAMMD
 
 
 Team
@@ -114,23 +116,23 @@ Feel free to contact me to discuss any issues, questions, or comments.
 
 |linkedin| |beacon| |made|
 
-Made with :coffee: and :pizza: by `luis mayta`_ and `hadenlabs`_.
+Made with :coffee: and :pizza: by `Luis Mayta`_ and `equipindustry`_.
 
 .. Links
 .. _`changelog`: CHANGELOG.rst
-.. _`contributors`: AUTHORS
+.. _`contributors`: docs/source/AUTHORS.rst
 .. _`contributing`: docs/source/CONTRIBUTING.rst
 
-.. _`hadenlabs`: https://github.com/hadenlabs
-.. _`luis mayta`: https://github.com/luismayta
+.. _`equipindustry`: https://github.com/equipindustry
+.. _`Luis Mayta`: https://github.com/luismayta
 
 
 .. _`Github`: https://github.com/luismayta
-.. _`Linkedin`: https://www.linkedin.com/in/luismayta
+.. _`Linkedin`: https://pe.linkedin.com/in/luismayta
 .. _`Email`: slovacus@gmail.com
-   :target: mailto:slovacus@gmail.com
+    :target: mailto:slovacus@gmail.com
 .. _`Twitter`: https://twitter.com/slovacus
-.. _`Website`: http://luismayta.github.io
+.. _`Website`: https://luismayta.github.io
 .. _`PGP`: https://keybase.io/luismayta/pgp_keys.asc
 
 .. |Build Status| image:: https://travis-ci.org/luismayta/hammerspoon.svg
@@ -142,15 +144,15 @@ Made with :coffee: and :pizza: by `luis mayta`_ and `hadenlabs`_.
 
 .. Team:
 .. |Luis Mayta| image:: https://github.com/luismayta.png?size=100
-   :target: https://github.com/luismayta
+    :target: https://github.com/luismayta
 
 .. Footer:
 .. |linkedin| image:: http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png
-   :target: http://pe.linkedin.com/in/luismayta
+   :target: https://pe.linkedin.com/in/luismayta
 .. |beacon| image:: https://ga-beacon.appspot.com/UA-65019326-1/github.com/luismayta/hammerspoon/readme
    :target: https://github.com/luismayta/hammerspoon
 .. |made| image:: https://img.shields.io/badge/Made%20with-Zsh-1f425f.svg
-   :target: http://www.zsh.org
+    :target: http://www.zsh.org
 
 .. Dependences:
 
