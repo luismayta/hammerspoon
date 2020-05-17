@@ -1,6 +1,6 @@
 local mod = {}
 mod.namespace = "notification"
-local pomodor = require('src.modules.pomodoor')
+local pomodor = require('src.mod.pomodoor')
 local hotkey = require('src.core.hotkey')
 local logger = require("hs.logger")
 local fn = require("src.core.functions")
