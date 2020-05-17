@@ -4,6 +4,7 @@
 -- Configuration variables
 --------------------------------------------------------------------------------
 local pomodoor={}
+
 pomodoor.bar = {
   indicator_height = 0.2, -- ratio from the height of the menubar (0..1)
   indicator_alpha  = 0.3,
