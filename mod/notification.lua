@@ -7,7 +7,7 @@ local fn = require("src.core.functions")
 local caffeine = hs.loadSpoon("Caffeine")
 
 
-mod.icon = hs.image.imageFromPath('src/assets/notification/success.png'):setSize({ w = 20, h = 20 })
+mod.icon = hs.image.imageFromPath('assets/notification/success.png'):setSize({ w = 20, h = 20 })
 
 -- debugging
 log = logger.new("notification", "debug")
