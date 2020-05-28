@@ -1,7 +1,7 @@
 -- @see https://github.com/ashfinal/awesome-hammerspoon/blob/master/Spoons/SpeedMenu.spoon/init.lua
 local speedBar = hs.menubar.new()
 speedBar:setTitle('0.00 KB/s')
-speedBar:setIcon(hs.image.imageFromPath('src/assets/speed/down.ico'):setSize({ w = 20, h = 20 }))
+speedBar:setIcon(hs.image.imageFromPath('assets/speed/down.ico'):setSize({ w = 20, h = 20 }))
 
 local interface = hs.network.primaryInterfaces();
 if interface then
