@@ -1,7 +1,7 @@
-require("src.core.extensions")
+require("core.extensions")
 
-local hotkey = require('src.core.hotkey')
-local config = require('src.core.config')
+local hotkey = require('core.hotkey')
+local config = require('core.config')
 
 for _, value in ipairs(config.apps) do
     if value.name then

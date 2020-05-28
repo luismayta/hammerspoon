@@ -1,4 +1,4 @@
-local hotkey = require('src.core.hotkey')
+local hotkey = require('core.hotkey')
 local switcher = hs.window.switcher.new()
 
 hotkey.bindWithAlt(
