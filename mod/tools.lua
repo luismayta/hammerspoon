@@ -1,5 +1,5 @@
-local hotkey = require("src.core.hotkey")
-local config = require("src.core.config")
+local hotkey = require("core.hotkey")
+local config = require("core.config")
 local logger = require("hs.logger")
 
 -- debugging

@@ -1,4 +1,4 @@
-local hotkey = require('src.core.hotkey')
+local hotkey = require('core.hotkey')
 hotkey.bindWithCtrlAlt(
   '0', 'Reloaded',
   function()

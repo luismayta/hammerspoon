@@ -1,7 +1,7 @@
-local pomodor = require('src.mod.pomodoor')
-local hotkey = require('src.core.hotkey')
+local pomodor = require('mod.pomodoor')
+local hotkey = require('core.hotkey')
 local logger = require("hs.logger")
-local fn = require("src.core.functions")
+local fn = require("core.functions")
 local caffeine = hs.loadSpoon("Caffeine")
 
 local notification = {}
