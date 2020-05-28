@@ -4,7 +4,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v2.2.0
+    rev: v2.4.0
     hooks:
       - id: validate_manifest
   - repo: https://github.com/detailyang/pre-commit-shell
@@ -30,7 +30,7 @@ repos:
       - id: rst-linter
         exclude: (docs/*|tests/*)
   - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v2.4.4
+    rev: v2.5.2
     hooks:
       - id: pylint
         exclude: __pycache__|migrations|conf.py|_build|.tox|pootle/static|pootle/translations|pootle/locale|pootle/assets|templates
@@ -43,7 +43,7 @@ repos:
     hooks:
       - id: black
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.7.9
+    rev: 3.8.2
     hooks:
       - id: flake8
   - repo: https://github.com/pre-commit/mirrors-mypy
@@ -53,7 +53,7 @@ repos:
         args:
           - --ignore-missing-imports
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v3.1.0
     hooks:
       - id: detect-private-key
         files: ^(?!\.?git-crypt)
@@ -88,34 +88,26 @@ repos:
     hooks:
       - id: do_not_commit
   - repo: https://github.com/asottile/blacken-docs
-    rev: v1.6.0
+    rev: v1.7.0
     hooks:
       - id: blacken-docs
         additional_dependencies:
           - black
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.29.0
+    rev: v1.31.0
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
   - repo: https://github.com/prettier/prettier
-    rev: 2.0.4 # Use the sha or tag you want to point at
+    rev: 2.0.5 # Use the sha or tag you want to point at
     hooks:
       - id: prettier
         args: [--config=prettier.config.js]
         exclude: lib|node_modules
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.0.0-alpha.3 # Use the sha / tag you want to point at
+    rev: v7.1.0 # Use the sha / tag you want to point at
     hooks:
       - id: eslint
-        args: [--fix]
+        args: [-c .eslintrc.js --fix]
         types: [text]
-        files: '\.(js|ts|tsx)$'
-        additional_dependencies:
-          - 'eslint@6.2.0'
-          - 'typescript'
-          - 'prettier'
-          - '@typescript-eslint/parser@2.0.0'
-          - '@typescript-eslint/eslint-plugin@2.0.0'
-          - eslint-config-prettier@6.0.0
-          - eslint-plugin-prettier@3.1.0
+        files: '\.(js|jsx|ts|tsx)$'
