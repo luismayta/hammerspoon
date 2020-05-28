@@ -1,4 +1,4 @@
-require("src.core.fntools")
+require("core.fntools")
 local fnutils = require "hs.fnutils"
 each   = fnutils.each
 filter = fnutils.filter
