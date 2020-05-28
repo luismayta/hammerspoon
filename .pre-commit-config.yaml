@@ -104,10 +104,3 @@ repos:
       - id: prettier
         args: [--config=prettier.config.js]
         exclude: lib|node_modules
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.1.0 # Use the sha / tag you want to point at
-    hooks:
-      - id: eslint
-        args: [-c .eslintrc.js --fix]
-        types: [text]
-        files: '\.(js|jsx|ts|tsx)$'
