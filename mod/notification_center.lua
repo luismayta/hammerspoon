@@ -6,7 +6,7 @@ local caffeine = hs.loadSpoon("Caffeine")
 
 local notification = {}
 
-notification.icon = hs.image.imageFromPath('src/assets/notification-center.png'):setSize({ w = 20, h = 20 })
+notification.icon = hs.image.imageFromPath('assets/notification-center.png'):setSize({ w = 20, h = 20 })
 
 -- debugging
 log = logger.new("notification", "debug")
