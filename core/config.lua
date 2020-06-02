@@ -104,7 +104,7 @@ config.apps = {
     {key = 'n', name = 'Notion'},
     {key = 'x', name = 'XCode'},
     {key = 'i', name = 'Insomnia'},
-    {key = 'r', name = 'Todoist'},
+    {key = 'r', name = 'Reminders'},
     {key = 'k', name = 'Keybase'},
     {key = 'o', name = 'Finder'},
     {key = 's', name = 'Slack'},
