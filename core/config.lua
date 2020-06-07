@@ -109,7 +109,7 @@ config.apps = {
     {key = 'o', name = 'Finder'},
     {key = 's', name = 'Slack'},
     {key = 'j', name = 'Jira'},
-    {key = 'v', name = 'Miro - formerly RealtimeBoard'},
+    {key = 'v', name = 'Miro'},
     {key = 'z', name = 'Zoom.us'},
 }
 
