@@ -91,26 +91,31 @@ config.countDown = {
   minutes = 25 * 60
 }
 
--- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
-config.apps = {
-    {key = 'a', name = 'Airtable'},
-    {key = 'b', name = 'Brave Browser'},
-    {key = 'c', name = 'GoogleCalendar'},
+-- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok using cmd + ctrl + alt.
+config.devs = {
     {key = 'e', name = 'Emacs'},
     {key = 'f', name = 'Figma'},
-    {key = 'h', name = 'Whatsapp'},
     {key = 't', name = 'Alacritty'},
-    {key = 'm', name = 'Spotify'},
     {key = 'n', name = 'Notion'},
     {key = 'x', name = 'XCode'},
     {key = 'i', name = 'Insomnia'},
-    {key = 'r', name = 'Reminders'},
     {key = 'k', name = 'Keybase'},
-    {key = 'o', name = 'Finder'},
     {key = 's', name = 'Slack'},
     {key = 'j', name = 'Jira'},
     {key = 'v', name = 'Miro'},
     {key = 'z', name = 'Zoom.us'},
+}
+
+
+-- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
+config.apps = {
+    {key = 'a', name = 'Airtable'},
+    {key = 'b', name = 'Brave Browser'},
+    {key = 'c', name = 'GoogleCalendar'},
+    {key = 'h', name = 'Whatsapp'},
+    {key = 'm', name = 'Spotify'},
+    {key = 'r', name = 'Reminders'},
+    {key = 'o', name = 'Finder'},
 }
 
 -- -----
