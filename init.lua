@@ -17,7 +17,7 @@ require('mod.wifi')
 require('mod.hooks')
 require('mod.browser')
 require('mod.apps')
-require('mod.tools')
+-- require('mod.tools')
 require('mod.vim')
 
 -- Speak something after configuration success.
