@@ -8,4 +8,9 @@ for _, value in ipairs(config.apps) do
       hotkey.bindWithCtrlAlt(value.key, "Load", launchOrCycleFocus(value.name))
     end
 end
+for _, value in ipairs(config.devs) do
+    if value.name then
+      hotkey.bindWithCtrlCmdAlt(value.key, "Load", launchOrCycleFocus(value.name))
+    end
+end
 hotkey.bindWithCtrlAlt("`", "Load Open", function() os.execute( "open ~" ) end )
