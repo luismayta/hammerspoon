@@ -86,7 +86,6 @@ setup:
 environment:
 	@echo "=====> loading virtualenv ${PYENV_NAME}..."
 	make python.environment
-	make keybase.environment
 	@echo ${MESSAGE_HAPPY}
 
 .PHONY: clean
