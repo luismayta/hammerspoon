@@ -1,8 +1,8 @@
-require("core.fntools")
-local hotkey = require('core.hotkey')
+local fntools = require('core.fntools')
 local settings = require('core.config')
+
 hs.loadSpoon("SpoonInstall")
-Install=spoon.SpoonInstall
+local Install=spoon.SpoonInstall
 
 Install:andUse(
 "WiFiTransitions",
@@ -17,7 +17,7 @@ Install:andUse(
       {
           to = "Evilcorp",
           fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(reconfigVolume, 80)
+            hs.fnutils.partial(fntools.reconfigVolume, 80)
             hs.execute(settings.DnsEmpty)
             hs.execute(settings.DnsCloudflare)
           end
@@ -25,7 +25,7 @@ Install:andUse(
       {
           from = "ulwifiT",
           fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(reconfigVolume, 25)
+            hs.fnutils.partial(fntools.reconfigVolume, 25)
             hs.execute(settings.DnsEmpty)
             hs.execute(settings.DnsCloudflare)
           end
@@ -33,7 +33,7 @@ Install:andUse(
       {
           from = "ulwifi",
           fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(reconfigVolume, 25)
+            hs.fnutils.partial(fntools.reconfigVolume, 25)
             hs.execute(settings.DnsEmpty)
             hs.execute(settings.DnsCloudflare)
           end
@@ -52,19 +52,22 @@ Install:andUse(
       },
       {
           to = "Wayra 5G",
-          fn = { hs.fnutils.partial(reconfigVolume, 25) }
+         fn = function(_, _, prev_ssid, new_ssid)
+            hs.fnutils.partial(fntools.reconfigVolume, 50)
+            hs.execute(settings.DnsEmpty)
+          end
       },
       {
           to = "VIPAC-INVITADOS",
           fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(reconfigVolume, 50)
+            hs.fnutils.partial(fntools.reconfigVolume, 50)
             hs.execute(settings.DnsEmpty)
           end
       },
       {
           from = "VIPAC-INVITADOS",
           fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(reconfigVolume, 25)
+            hs.fnutils.partial(fntools.reconfigVolume, 25)
             hs.execute(settings.DnsEmpty)
             hs.execute(settings.DnsCloudflare)
           end
