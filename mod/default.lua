@@ -1,5 +1,3 @@
-local config = require("core.config")
-
 -- disable animations
 hs.window.animationDuration = 0.0
 
