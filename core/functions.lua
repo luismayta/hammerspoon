@@ -3,7 +3,7 @@ local logger = require("hs.logger")
 local osx = {}
 
 -- debugging
-log = logger.new("functions", "debug")
+local log = logger.new("functions", "debug")
 
 ---------------------------------------------
 -- OS X isDoNotDisturbEnabled
@@ -12,7 +12,7 @@ function osx.isDoNotDisturbEnabled()
   local command =
     'defaults -currentHost read com.apple.notificationcenterui doNotDisturb'
 
-  mode, _, _, _ = hs.execute(command)
+  local mode, _, _, _ = hs.execute(command)
 
   return tonumber(mode) == 1
 end
@@ -21,7 +21,7 @@ end
 -- OS X Toggle Status Notification
 ---------------------------------------------
 function osx.toggleDoNotDisturb()
-  local output, status, type, rc = hs.execute('do-not-disturb toggle', true)
+  local _, status, type, rc = hs.execute('do-not-disturb toggle', true)
 
   if (not (status == true and type == 'exit' and rc == 0)) then
     hs.alert("Whoops! Toggling 'Do Not Disturb' failed.")
