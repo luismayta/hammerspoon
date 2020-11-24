@@ -1,6 +1,6 @@
 local strkit = require('core.strkit')
 
-hotkey = {
+local hotkey = {
   registeredHotkey = {},
   hyper = {"ctrl", "alt"},
   cmdHyper = {"cmd", "ctrl", "alt"},
@@ -83,7 +83,7 @@ end
 hotkey.bindWithCtrlCmdAlt(
   'K', 'Show HotKeys',
   function()
-      allHotKey = ""
+      local allHotKey = ""
       for _, v in pairs(hotkey.registeredHotkey) do
         allHotKey = allHotKey .. '▶︎ (' .. v.key .. ') ☞' .. v.desc .. '\n'
       end
