@@ -1,8 +1,5 @@
-local hotkey = require("core.hotkey")
-local settings = require("core.config")
-
 hs.loadSpoon("SpoonInstall")
-Install=spoon.SpoonInstall
+local Install=spoon.SpoonInstall
 
 -- Install:andUse("URLDispatcher",
 --     {
