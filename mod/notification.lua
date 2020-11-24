@@ -10,7 +10,7 @@ local caffeine = hs.loadSpoon("Caffeine")
 mod.icon = hs.image.imageFromPath('assets/notification/success.png'):setSize({ w = 20, h = 20 })
 
 -- debugging
-log = logger.new("notification", "debug")
+local log = logger.new("notification", "debug")
 
 mod.vars = {
   afterTime= 2,
