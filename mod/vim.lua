@@ -1,7 +1,3 @@
-local hotkey = require("core.hotkey")
-local config = require("core.config")
-local logger = require("hs.logger")
-
 local VimMode = hs.loadSpoon('VimMode')
 local vim = VimMode:new()
 
