@@ -1,5 +1,5 @@
-local hotkey = require("core.hotkey")
-config = {
+local hotkey = require "core.hotkey"
+local config = {
   DnsEmpty= "networksetup -setdnsservers Wi-Fi empty",
   DnsCloudflare= "networksetup -setdnsservers Wi-Fi 127.0.0.1 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4",
 }
@@ -93,6 +93,7 @@ config.countDown = {
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok using cmd + ctrl + alt.
 config.devs = {
+    {key = 'b', name = 'Bitwarden'},
     {key = 'e', name = 'Emacs'},
     {key = 'f', name = 'Figma'},
     {key = 't', name = 'Alacritty'},
