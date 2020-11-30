@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local memoryIcon = {
     icon = hs.image.imageFromPath('assets/memory/icon.png'):setSize({ w = 20, h = 20 }),
     clean = hs.image.imageFromPath('assets/memory/clean.png'):setSize({ w = 20, h = 20 }),
