@@ -104,9 +104,8 @@ config.devs = {
     {key = 's', name = 'Slack'},
     {key = 'j', name = 'Jira'},
     {key = 'v', name = 'Miro'},
-    {key = 'z', name = 'Zoom.us'},
+    {key = 'z', name = 'Tandem'},
 }
-
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
 config.apps = {
@@ -118,16 +117,6 @@ config.apps = {
     {key = 'r', name = 'Reminders'},
     {key = 'o', name = 'Finder'},
 }
-
--- -----
--- Utils
--- -----
-function config.split(sep)
-  local sep, fields = sep or ':', {}
-  local pattern = string.format('([^%s]+)', sep)
-  self:gsub(pattern, function(c) fields[#fields+1] = c end)
-  return fields
-end
 
 config.DefaultBrowser = config.browser.brave
 config.devBrowser = config.browser.brave

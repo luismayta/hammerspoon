@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local pomodor = require('mod.pomodoor')
 local hotkey = require('core.hotkey')
 local logger = require("hs.logger")
@@ -9,7 +10,7 @@ local notification = {}
 notification.icon = hs.image.imageFromPath('assets/notification-center.png'):setSize({ w = 20, h = 20 })
 
 -- debugging
-log = logger.new("notification", "debug")
+local log = logger.new("notification", "debug")
 
 notification.vars = {
   afterTime= 2,
