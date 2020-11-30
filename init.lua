@@ -5,9 +5,7 @@ print('-------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- luacheck: globals hs spoon
 hs.loadSpoon("SpoonInstall")
-
 spoon.SpoonInstall.use_syncinstall = true
-
 spoon.SpoonInstall.repos.doiken = {
   url = "https://github.com/doiken/Spoons",
   desc = "doiken's spoon repository",
@@ -17,8 +15,8 @@ local speech = require('hs.speech')
 -- Init speaker.
 local speaker = speech.new()
 require('mod.default')
--- require('mod.Memory')
--- require('mod.speed')
+require('mod.Memory')
+require('mod.speed')
 require('mod.widget')
 require('mod.windows')
 require('mod.switcher')
