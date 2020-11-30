@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 -- @see https://github.com/ashfinal/awesome-hammerspoon/blob/master/Spoons/SpeedMenu.spoon/init.lua
 local speedBar = hs.menubar.new()
 speedBar:setTitle('0.00 KB/s')
