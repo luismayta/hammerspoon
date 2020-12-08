@@ -91,7 +91,7 @@ config.countDown = {
   minutes = 25 * 60
 }
 
--- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok using cmd + ctrl + alt.
+-- app environment keybindings. Bundle `id` is prefered, but application `name` will be ok using cmd + ctrl + alt.
 config.devs = {
     {key = 'b', name = 'Bitwarden'},
     {key = 'e', name = 'Emacs'},
@@ -107,8 +107,9 @@ config.devs = {
     {key = 'z', name = 'Tandem'},
 }
 
--- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
+-- app environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
 config.apps = {
+    {key = '3', name = 'Launchpad'},
     {key = 'a', name = 'Airtable'},
     {key = 'b', name = 'Brave Browser'},
     {key = 'c', name = 'GoogleCalendar'},
@@ -117,6 +118,16 @@ config.apps = {
     {key = 'r', name = 'Reminders'},
     {key = 'o', name = 'Finder'},
 }
+
+-- -----
+-- Utils
+-- -----
+function config.split(sep)
+  local sep, fields = sep or ':', {}
+  local pattern = string.format('([^%s]+)', sep)
+  self:gsub(pattern, function(c) fields[#fields+1] = c end)
+  return fields
+end
 
 config.DefaultBrowser = config.browser.brave
 config.devBrowser = config.browser.brave
