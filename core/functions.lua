@@ -1,7 +1,7 @@
 -- luacheck: globals hs spoon
 local logger = require("hs.logger")
 
-local osx = {}
+local obj = {}
 
 -- debugging
 local log = logger.new("functions", "debug")
@@ -9,7 +9,7 @@ local log = logger.new("functions", "debug")
 ---------------------------------------------
 -- OS X isDoNotDisturbEnabled
 ---------------------------------------------
-function osx.isDoNotDisturbEnabled()
+function obj.isDoNotDisturbEnabled()
   local command =
     'defaults -currentHost read com.apple.notificationcenterui doNotDisturb'
 
@@ -21,7 +21,7 @@ end
 ---------------------------------------------
 -- OS X Toggle Status Notification
 ---------------------------------------------
-function osx.toggleDoNotDisturb()
+function obj.toggleDoNotDisturb()
   local _, status, type, rc = hs.execute('do-not-disturb toggle', true)
 
   if (not (status == true and type == 'exit' and rc == 0)) then
@@ -40,7 +40,7 @@ end
 ---------------------------------------------
 -- OS X Notification SetStatusNotification
 ---------------------------------------------
-function osx.setStatusNotification(status)
+function obj.setStatusNotification(status)
 
   local script ="do-not-disturb off"
   if status == 'enable' then
@@ -55,7 +55,7 @@ end
 ---------------------------------------------
 -- OS X Notification Clear
 ---------------------------------------------
-function osx.clearNotifications()
+function obj.clearNotifications()
   local script = [[
     my closeNotif()
     on closeNotif()
@@ -84,4 +84,35 @@ function osx.clearNotifications()
   return res
 end
 
-return osx
+function obj.toggleApplication(name)
+   return function()
+      local app = hs.application.find(name)
+      if not app or app:isHidden() then
+         hs.application.launchOrFocus(name)
+      elseif hs.application.frontmostApplication() ~= app then
+         app:activate()
+      else
+         app:hide()
+      end
+  end
+end
+
+function obj.goLeft()
+  local switcher = hs.window.switcher.new()
+  switcher:previous()
+end
+
+function obj.goRight()
+  local switcher = hs.window.switcher.new()
+  switcher:next()
+end
+
+--- Reconfigure volume.
+-- @name reconfigVolume
+-- @param volume number
+-- @return null
+function obj.reconfigVolume(volume)
+  hs.audiodevice.defaultOutputDevice():setVolume(volume)
+end
+
+return obj
