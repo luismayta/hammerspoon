@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local strkit = require('core.strkit')
 
 local hotkey = {
@@ -6,7 +7,6 @@ local hotkey = {
   cmdHyper = {"cmd", "ctrl", "alt"},
   shift_hyper = {"shift", "cmd"},
 }
-
 
 function hotkey.bind(mods, key, desc, fn)
   hs.hotkey.bind(mods, key, nil, fn)

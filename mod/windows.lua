@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local hotkey = require("core.hotkey")
 local window = require("hs.window")
 

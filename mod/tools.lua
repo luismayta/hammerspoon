@@ -1,9 +1,9 @@
-local hotkey = require("core.hotkey")
+-- luacheck: globals hs spoon
 local config = require("core.config")
 local logger = require("hs.logger")
 
 -- debugging
-log = logger.new("tools", "debug")
+local log = logger.new("tools", "debug")
 
 hs.loadSpoon("SpoonInstall")
 Install=spoon.SpoonInstall
