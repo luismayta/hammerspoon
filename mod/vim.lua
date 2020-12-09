@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local VimMode = hs.loadSpoon('VimMode')
 local vim = VimMode:new()
 

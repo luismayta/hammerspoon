@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local fntools = require('core.fntools')
 local settings = require('core.config')
 

@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local hotkey = require('core.hotkey')
 hotkey.bindWithCtrlAlt(
   '0', 'Reloaded',
