@@ -1,4 +1,0 @@
-[submodule "Spoons/VimMode.spoon"]
-    path = Spoons/VimMode.spoon
-    url = https://github.com/dbalatero/VimMode.spoon
-    branch = vim-mode-v2
