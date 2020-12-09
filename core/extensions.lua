@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 require("core.fntools")
 
 partial = hs.fnutils.partial

@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 function flatten(t)
   local ret = {}
   for _, v in ipairs(t) do
