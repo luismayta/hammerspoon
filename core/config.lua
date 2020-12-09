@@ -110,6 +110,7 @@ config.devs = {
 
 -- app environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
 config.apps = {
+    {key = ',', name = 'System Preferences'},
     {key = '3', name = 'Launchpad'},
     {key = 'e', name = 'Spark'},
     {key = 'a', name = 'Airtable'},
