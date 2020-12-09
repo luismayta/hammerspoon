@@ -1,13 +1,12 @@
 -- luacheck: globals hs spoon
-local fntools = require('core.fntools')
+local fntools = require('core.functions')
 local settings = require('core.config')
 
 hs.loadSpoon("SpoonInstall")
 local Install=spoon.SpoonInstall
 
 Install:andUse(
-"WiFiTransitions",
-{
+"WiFiTransitions",{
   config = {
     actions = {
       -- { -- Test action just to see the SSID transitions
