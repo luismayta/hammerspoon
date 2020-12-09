@@ -1,3 +1,4 @@
+-- luacheck: globals hs spoon
 local logger = require("hs.logger")
 
 local osx = {}

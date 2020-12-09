@@ -1,11 +1,10 @@
+-- luacheck: globals hs spoon
 local mod = {}
 mod.namespace = "notification"
 local pomodor = require('mod.pomodoor')
-local hotkey = require('core.hotkey')
 local logger = require("hs.logger")
 local fn = require("core.functions")
 local caffeine = hs.loadSpoon("Caffeine")
-
 
 mod.icon = hs.image.imageFromPath('assets/notification/success.png'):setSize({ w = 20, h = 20 })
 

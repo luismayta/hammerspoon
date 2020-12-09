@@ -1,3 +1,5 @@
+-- luacheck: globals hs spoon
+
 require("core.fntools")
 hs.loadSpoon("SpoonInstall")
 local Install =spoon.SpoonInstall
