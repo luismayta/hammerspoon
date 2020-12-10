@@ -30,14 +30,6 @@ config.spoons = {
     }
   },
   {
-    name="WindowGrid",
-    settings={
-      config = { gridGeometries = { { "6x4" } } },
-      hotkeys = {show_grid = {hotkey.hyper, ","}},
-      start = true,
-    }
-  },
-  {
     name="WindowHalfsAndThirds",
     settings={
       config = {
@@ -82,9 +74,6 @@ config.spoons = {
   {
     name="FnMate"
   },
-  {
-    name="WinWin"
-  },
 }
 
 -- Implement settings for countdown
@@ -96,7 +85,6 @@ config.countDown = {
 config.devs = {
     {key = 'b', name = 'Bitwarden'},
     {key = 'e', name = 'Emacs'},
-    {key = 'f', name = 'Figma'},
     {key = 't', name = 'Alacritty'},
     {key = 'n', name = 'Notion'},
     {key = 'x', name = 'XCode'},
@@ -105,13 +93,14 @@ config.devs = {
     {key = 's', name = 'Slack'},
     {key = 'j', name = 'Jira'},
     {key = 'v', name = 'Miro'},
-    {key = 'z', name = 'Tandem'},
+    {key = 'z', name = 'Zoom'},
 }
 
 -- app environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
 config.apps = {
     {key = ',', name = 'System Preferences'},
     {key = '3', name = 'Launchpad'},
+    {key = 'f', name = 'Figma'},
     {key = 'e', name = 'Spark'},
     {key = 'a', name = 'Airtable'},
     {key = 'b', name = 'Brave Browser'},
