@@ -91,8 +91,6 @@ function obj.toggleApplication(name)
          hs.application.launchOrFocus(name)
       elseif hs.application.frontmostApplication() ~= app then
          app:activate()
-      else
-         app:hide()
       end
   end
 end
