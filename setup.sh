@@ -7,6 +7,7 @@ BLUE="\033[0;36m"
 NORMAL="\033[0m"
 
 HAMMERSPOON_REPO_HTTPS="https://github.com/luismayta/hammerspoon.git"
+HAMMERSPOON_REPO_BRANCH="develop"
 HAMMERSPOON_ROOT_PATH="${HOME}/.hammerspoon"
 HAMMERSPOON_MESSAGE_BREW="Please install brew or use antibody bundle luismayta/zsh-brew branch:develop"
 HAMMERSPOON_MESSAGE_DONE="Keep calm and use Hammerspoon!"
@@ -57,7 +58,6 @@ hammerspoon::install::dependences() {
             return
         fi
     }
-
 }
 
 # hammerspoon::install - install hammerspoon app
@@ -89,7 +89,7 @@ hammerspoon::post_install() {
 
     message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
 
-    env git clone --depth=1 "${HAMMERSPOON_REPO_HTTPS}" --branch master "${HAMMERSPOON_ROOT_PATH}" || {
+    env git clone --depth=1 "${HAMMERSPOON_REPO_HTTPS}" --branch "${HAMMERSPOON_REPO_BRANCH} "${HAMMERSPOON_ROOT_PATH}" || {
         message_warning "git clone of hammerspoon repo failed."
         return
     }
