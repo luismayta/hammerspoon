@@ -1,4 +1,8 @@
 -- luacheck: globals hs spoon
+
+hs.application.enableSpotlightForNameSearches(true)
+hs.window.animationDuration = 0
+
 local hotkey = require "core.hotkey"
 local config = {
   DnsEmpty= "networksetup -setdnsservers Wi-Fi empty",
@@ -93,7 +97,7 @@ config.devs = {
     {key = 's', name = 'Slack'},
     {key = 'j', name = 'Jira'},
     {key = 'v', name = 'Miro'},
-    {key = 'z', name = 'Zoom'},
+    {key = 'z', name = 'Zoom.us'},
 }
 
 -- app environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
@@ -104,8 +108,8 @@ config.apps = {
     {key = 'e', name = 'Spark'},
     {key = 'a', name = 'Airtable'},
     {key = 'b', name = 'Brave Browser'},
-    {key = 'c', name = 'GoogleCalendar'},
-    {key = 'h', name = 'Whatsapp'},
+    {key = 'c', name = 'Calendar'},
+    {key = 'h', name = 'WhatsApp'},
     {key = 'm', name = 'Spotify'},
     {key = 'r', name = 'Reminders'},
     {key = 'o', name = 'Finder'},
