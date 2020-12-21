@@ -1,15 +1,13 @@
 -- luacheck: globals hs spoon
+local hotkey = require('core.hotkey')
 local VimMode = hs.loadSpoon('VimMode')
 local vim = VimMode:new()
 
 vim
-   :disableForApp('VSCodium')
-   :disableForApp('zoom.us')
-   :disableForApp('iTerm')
-   :disableForApp('Alacritty')
-   :disableForApp('Terminal')
    :shouldDimScreenInNormalMode(true)
    :enterWithSequence('jk')
-   :bindHotKeys({ enter = {{'ctrl'}, ';'} })
+   :bindHotKeys({ enter = {hotkey.cmdHyper, ';'} })
 
-return vim
+-- If you want the screen to dim (a la Flux) when you enter normal mode
+-- flip this to true.
+vim:shouldDimScreenInNormalMode(false)
