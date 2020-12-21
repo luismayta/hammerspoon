@@ -6,10 +6,19 @@ print('-------------------------------------------------------------------------
 -- luacheck: globals hs spoon
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = true
+
 spoon.SpoonInstall.repos.doiken = {
   url = "https://github.com/doiken/Spoons",
   desc = "doiken's spoon repository",
 }
+spoon.SpoonInstall.repos.vimmode = {
+    url = "https://github.com/jokajak/VimMode.spoon",
+    desc = "jokajak's VimMode spoon repository",
+    branch = "spooninstall"
+}
+
+spoon.SpoonInstall.use_syncinstall = true
+spoon.SpoonInstall:updateAllRepos()
 
 local speech = require('hs.speech')
 -- Init speaker.
@@ -26,7 +35,7 @@ require('mod.hooks')
 require('mod.browser')
 require('mod.apps')
 require('mod.tools')
--- require('mod.vim')
+require('mod.vim')
 
 -- Speak something after configuration success.
 speaker:speak(os.getenv("USER") .. ", I am online!")
