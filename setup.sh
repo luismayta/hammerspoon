@@ -68,7 +68,6 @@ hammerspoon::install() {
     fi
     message_info "Install Hammerspoon"
     brew cask install hammerspoon
-    hammerspoon::post_install
     message_success "Installed Hammerspoon"
 }
 
@@ -100,3 +99,5 @@ hammerspoon::post_install() {
 if [ ! -d "/Applications/Hammerspoon.app" ]; then
     hammerspoon::install
 fi
+
+hammerspoon::post_install
