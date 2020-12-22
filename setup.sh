@@ -89,7 +89,7 @@ hammerspoon::post_install() {
 
     message_info "Cloning hammerspoon from ${HAMMERSPOON_REPO_HTTPS}"
 
-    env git clone --depth=1 "${HAMMERSPOON_REPO_HTTPS}" --branch "${HAMMERSPOON_REPO_BRANCH} "${HAMMERSPOON_ROOT_PATH}" || {
+    env git clone --depth=1 "${HAMMERSPOON_REPO_HTTPS}" --branch "${HAMMERSPOON_REPO_BRANCH}" "${HAMMERSPOON_ROOT_PATH}" || {
         message_warning "git clone of hammerspoon repo failed."
         return
     }
