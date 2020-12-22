@@ -6,7 +6,7 @@ local logger = require("hs.logger")
 local log = logger.new("tools", "debug")
 
 hs.loadSpoon("SpoonInstall")
-Install=spoon.SpoonInstall
+local Install=spoon.SpoonInstall
 
 Install:andUse(
   "ModalMgr",
