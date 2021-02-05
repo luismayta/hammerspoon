@@ -1,6 +1,6 @@
 {
   "name": "@luismayta/hammerspoon",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "hammerspoon for mac os",
   "repository": "ssh://git@github.com/luismayta/hammerspoon.git",
   "author": "Luis Mayta <slovacus@gmail.com>",
