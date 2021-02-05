@@ -1,0 +1,72 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: hammerspoon
+
+company:
+  name: hadenlabs
+  description: |-
+    company labs
+  url: https://hadenlabs.com
+  github: https://github.com/hadenlabs
+  email: support@hadenlbas.com
+
+copyright:
+  name: Hadenlabs
+  url: https://hadenlabs.com
+
+email:
+  support: support@hadenlabs.com
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: 'MIT'
+
+# Canonical GitHub repo
+github_repo: luismayta/hammerspoon
+
+# Badges to display
+badges:
+  - name: 'Build Status'
+    image: 'https://travis-ci.org/luismayta/hammerspoon.svg?branch=main'
+    url: 'https://travis-ci.org/luismayta/hammerspoon'
+  - name: 'Issues'
+    image: 'https://img.shields.io/github/issues/luismayta/hammerspoon.svg'
+    url: 'https://github.com/luismayta/hammerspoon/issues'
+  - name: 'Latest Release'
+    image: 'https://img.shields.io/github/release/luismayta/hammerspoon.svg'
+    url: 'https://travis-ci.org/luismayta/hammerspoon/releases'
+
+# Short description of this project
+description: |-
+  hammerspoon for code.
+
+requirements: |-
+
+  This is a list of applications that need to be installed previously to enjoy all the goodies of this configuration.
+
+  - [Git](http://git-scm.com)
+  - [Curl](https://github.com/bagder/curl)
+  - [Wget](http://www.gnu.org/software/wget)
+
+
+installation:
+  - 'docs/include/installation/curl.md'
+  - 'docs/include/installation/wget.md'
+
+# How to use this project
+usage: |-
+  ```bash
+  make setup
+  ```
+
+# Contributors to this project
+contributors:
+  - name: 'Luis Mayta'
+    github: 'luismayta'
