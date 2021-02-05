@@ -1,1 +1,1 @@
-# Welcome to Hammerspoon documentation
+# Welcome to hammerspoon documentation

@@ -1,6 +1,6 @@
 # How To Contribute
 
-Contributions to Hammerspoon are welcome.
+Contributions to hammerspoon are welcome.
 
 ## Getting Started
 
@@ -45,10 +45,6 @@ Use [slash convention]() with the same leaders as `commits` e.g.:
 ## Code Submission
 
 ### Code Improvement
-
-1.  See if an [Issue](https://endustria.atlassian.net/projects/IN/issues) exists
-    - Comment with any added information to help the discussion
-2.  Create an [Issue](https://endustria.atlassian.net/projects/IN/issues) if needed
 
 ### Code Submission
 
