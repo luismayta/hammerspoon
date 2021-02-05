@@ -55,7 +55,6 @@ requirements: |-
   - [Curl](https://github.com/bagder/curl)
   - [Wget](http://www.gnu.org/software/wget)
 
-
 installation:
   - 'docs/include/installation/curl.md'
   - 'docs/include/installation/wget.md'
