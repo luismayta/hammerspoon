@@ -6,7 +6,7 @@
   "author": "Luis Mayta <slovacus@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=12"
+    "node": ">=v12.22.1"
   },
   "keywords": [],
   "scripts": {
