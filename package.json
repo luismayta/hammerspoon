@@ -27,7 +27,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@equipindustry/eslint-config": "^0.3.4",
     "@equipindustry/prettierrc": "^0.2.0",
-    "@types/jest": "^26.0.13",
+    "@types/jest": "^26.0.22",
     "@types/mocha": "^8.0.3",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
