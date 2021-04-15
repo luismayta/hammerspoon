@@ -5,7 +5,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v2.9.3
+    rev: v2.12.1
     hooks:
       - id: validate_manifest
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
@@ -19,7 +19,7 @@ repos:
         args: []
         files: .py$
   - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v2.6.0
+    rev: v2.7.4
     hooks:
       - id: pylint
         exclude: __pycache__|migrations|conf.py|_build|.tox|pootle/static|pootle/translations|pootle/locale|pootle/assets|templates
@@ -32,7 +32,7 @@ repos:
     hooks:
       - id: black
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
+    rev: 3.9.1
     hooks:
       - id: flake8
   - repo: https://github.com/pre-commit/mirrors-mypy
