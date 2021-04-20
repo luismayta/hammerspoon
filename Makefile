@@ -23,11 +23,15 @@ REPOSITORY_DOMAIN:=github.com
 REPOSITORY_OWNER:=${TEAM}
 AWS_VAULT ?= ${TEAM}
 PROJECT := hammerspoon
-PROJECT_PORT := 3000
 
 PYTHON_VERSION=3.8.0
-NODE_VERSION=12.14.1
+NODE_VERSION=14.15.5
 PYENV_NAME="${PROJECT}"
+GIT_IGNORES:=python,node,go,terraform,ansible
+GI:=gi
+
+# issues reviewers
+REVIEWERS?=luismayta
 
 # Configuration.
 SHELL ?=/bin/bash
@@ -37,10 +41,10 @@ MESSAGE_HAPPY?:="Done! ${MESSAGE}, Now Happy Hacking"
 SOURCE_DIR=$(ROOT_DIR)
 PROVISION_DIR:=$(ROOT_DIR)/provision
 DOCS_DIR:=$(ROOT_DIR)/docs
-README_TEMPLATE:=$(PROVISION_DIR)/templates/README.md.gotmpl
+README_TEMPLATE:=$(PROVISION_DIR)/templates/README.tpl.md
 
 export README_FILE ?= README.md
-export README_YAML ?= provision/generator/README.yaml
+export README_YAML ?= provision/generators/README.yaml
 export README_INCLUDES ?= $(file://$(shell pwd)/?type=text/plain)
 
 FILE_README:=$(ROOT_DIR)/README.md
@@ -61,53 +65,49 @@ docker-yarn-run:=$(docker-dev) run --rm --service-ports ${DOCKER_SERVICE_YARN}
 
 include provision/make/*.mk
 
+## Display help for all targets
+.PHONY: help
 help:
 	@echo '${MESSAGE} Makefile for ${PROJECT}'
 	@echo ''
-	@echo 'Usage:'
-	@echo '    environment               create environment with pyenv'
-	@echo '    readme                    build README'
-	@echo '    setup                     install requirements'
-	@echo ''
-	@make docker.help
-	@make docs.help
-	@make test.help
-	@make utils.help
-	@make python.help
-	@make yarn.help
+	@awk '/^.PHONY: / { \
+		msg = match(lastLine, /^## /); \
+			if (msg) { \
+				cmd = substr($$0, 9, 100); \
+				msg = substr(lastLine, 4, 1000); \
+				printf "  ${GREEN}%-30s${RESET} %s\n", cmd, msg; \
+			} \
+	} \
+	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
 ## Create README.md by building it from README.yaml
+.PHONY: readme
 readme:
 	@gomplate --file $(README_TEMPLATE) \
 		--out $(README_FILE)
 
+## setup dependences of project
+.PHONY: setup
 setup:
-	@echo "=====> install packages..."
+	@echo "==> install packages..."
 	make python.setup
 	make python.precommit
-	@cp -rf provision/git/hooks/prepare-commit-msg .git/hooks/
 	@[ -e ".env" ] || cp -rf .env.example .env
 	make yarn.setup
+	make git.setup
 	@echo ${MESSAGE_HAPPY}
 
+## setup environment for sre
+.PHONY: setup.sre
+setup.sre: setup
+	@echo "----> install packages for SRE..."
+	make terragrunt.setup
+	@echo ${MESSAGE_HAPPY}
+
+## setup environment of project
+.PHONY: environment
 environment:
-	@echo "=====> loading virtualenv ${PYENV_NAME}..."
+	@echo "==> loading virtualenv ${PYENV_NAME}..."
 	make python.environment
+	make terragrunt.environment
 	@echo ${MESSAGE_HAPPY}
-
-.PHONY: clean
-clean:
-	@rm -f ./dist.zip
-	@rm -fr ./vendor
-
-# Show to-do items per file.
-todo:
-	@grep \
-		--exclude-dir=vendor \
-		--exclude-dir=node_modules \
-		--exclude-dir=bin \
-		--exclude=Makefile \
-		--text \
-		--color \
-		-nRo -E ' TODO:.*|SkipNow|FIXMEE:.*' .
-.PHONY: todo
