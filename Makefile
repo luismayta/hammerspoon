@@ -25,9 +25,8 @@ AWS_VAULT ?= ${TEAM}
 PROJECT := hammerspoon
 
 PYTHON_VERSION=3.8.0
-NODE_VERSION=14.15.5
 PYENV_NAME="${PROJECT}"
-GIT_IGNORES:=python,node,go,terraform,ansible
+GIT_IGNORES:=python,node,go,lua
 GI:=gi
 
 # issues reviewers
@@ -93,15 +92,7 @@ setup:
 	make python.setup
 	make python.precommit
 	@[ -e ".env" ] || cp -rf .env.example .env
-	make yarn.setup
 	make git.setup
-	@echo ${MESSAGE_HAPPY}
-
-## setup environment for sre
-.PHONY: setup.sre
-setup.sre: setup
-	@echo "----> install packages for SRE..."
-	make terragrunt.setup
 	@echo ${MESSAGE_HAPPY}
 
 ## setup environment of project
@@ -109,5 +100,4 @@ setup.sre: setup
 environment:
 	@echo "==> loading virtualenv ${PYENV_NAME}..."
 	make python.environment
-	make terragrunt.environment
 	@echo ${MESSAGE_HAPPY}
