@@ -21,21 +21,21 @@ github_repo: luismayta/hammerspoon
 
 # Badges to display
 badges:
-  - name: GitHub tag (latest SemVer)
-    image: https://img.shields.io/github/v/tag/luismayta/hammerspoon.svg?label=latest&sort=semver
+  - name: Latest Release
+    image: https://img.shields.io/github/release/luismayta/hammerspoon
     url: https://github.com/luismayta/hammerspoon/releases
   - name: Lint
-    image: https://github.com/luismayta/hammerspoon/actions/workflows/lint.yml/badge.svg?branch=develop
-    url: https://github.com/luismayta/hammerspoon/actions
-  - name: Issues
-    image: https://img.shields.io/github/issues/luismayta/hammerspoon.svg
-    url: https://github.com/luismayta/hammerspoon/issues
-  - name: Latest Release
-    image: https://img.shields.io/github/release/luismayta/hammerspoon.svg
-    url: https://github.com/luismayta/hammerspoon/releases
-  - name: Beacon
-    image: https://ga-beacon.appspot.com/G-MZEK48EGE8/hammerspoon/readme
-    url: https://github.com/luismayta/hammerspoon
+    image: https://img.shields.io/github/workflow/status/hadenlabs/ansible-role-template/lint-code
+    url: https://github.com/hadenlabs/ansible-role-template/actions?workflow=lint-code
+  - name: pre-commit
+    image: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+    url: https://github.com/pre-commit/pre-commit
+  - name: Conventional Commits
+    image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
+    url: https://conventionalcommits.org
+  - name: KeepAChangelog
+    image: https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735
+    url: https://keepachangelog.com
 
 # Short description of this project
 description: |-
