@@ -25,6 +25,7 @@ AWS_VAULT ?= ${TEAM}
 PROJECT := hammerspoon
 
 PYTHON_VERSION=3.8.0
+NODE_VERSION=14.16.1
 PYENV_NAME="${PROJECT}"
 GIT_IGNORES:=python,node,go,lua
 GI:=gi
