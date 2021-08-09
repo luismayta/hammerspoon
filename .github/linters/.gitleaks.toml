@@ -170,6 +170,7 @@ title = "gitleaks config"
         description = "ignore emails"
         regexes = [
             '''[a-zA-Z0-9._%+-]+@users.noreply.github.com''',
+            '''diego@zzamboni.org''',
             '''git@github.com''',
             '''git@gitlab.com''',
             '''slovacus@gmail.com''',
@@ -228,20 +229,14 @@ title = "gitleaks config"
 # Global allowlist
 [allowlist]
   description = "Whitelisted files"
-  files = [
-    '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
-    '''^\.gitignore$''',
-    '''^\.gitleaks.toml$''',
-    '''^yarn.lock$''',
-    '''^vendor/(.*?)$''',
-    '''^node_modules/(.*?)$''',
-  ]
-  commits = [
-    '''5cb2bd78a4702b9f80c097f10c0b8e96a1baeb35''',
-    '''a5bec8d7001aeb560fb0754d83ea38c167fefc31''',
-    '''a79adf203519539826e059c8c824478de3147e0d''',
-    '''e72adb3e1222c1c50fc4b963f5209f35af5b7c42''',
-  ]
+    files = [
+      '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
+      '''^\.gitignore$''',
+      '''^\.gitleaks.toml$''',
+      '''^yarn.lock$''',
+      '''^vendor/(.*?)$''',
+      '''^node_modules/(.*?)$''',
+    ]
 
 [whitelist]
   description = "image and html allowlists"
