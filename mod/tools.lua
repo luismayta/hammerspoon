@@ -23,14 +23,3 @@ for _, app in pairs(config.spoons) do
     Install:andUse(app.name)
   end
 end
-
---
--- CountDown
---
--- local countDown = hs.loadSpoon("CountDown")
--- hotkey.bindWithCtrlCmdAlt("t", "countdown",
---   function ()
---     hs.notify.new({title="Hammerspoon", informativeText="Starting Timer!"}):send()
---     countDown:startFor(config.countDown.minutes)
---   end
--- )
