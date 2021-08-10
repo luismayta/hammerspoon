@@ -67,7 +67,7 @@ hammerspoon::install() {
         return
     fi
     message_info "Install Hammerspoon"
-    brew cask install hammerspoon
+    brew install --cask hammerspoon
     message_success "Installed Hammerspoon"
 }
 
