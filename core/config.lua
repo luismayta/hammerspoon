@@ -73,23 +73,16 @@ config.spoons = {
     }
   },
   {
-    name="CountDown"
-  },
-  {
     name="FnMate"
   },
 }
 
--- Implement settings for countdown
-config.countDown = {
-  minutes = 25 * 60
-}
-
--- app environment keybindings. Bundle `id` is prefered, but application `name` will be ok using cmd + ctrl + alt.
+-- app environment keybindings. Bundle `id` is preferred, but application `name` will be ok using cmd + ctrl + alt.
 config.devs = {
     {key = 'b', name = 'Bitwarden'},
+    {key = 'c', name = 'Vscodium'},
     {key = 'e', name = 'Emacs'},
-    {key = 't', name = 'Alacritty'},
+    {key = 't', name = 'Kitty'},
     {key = 'n', name = 'Notion'},
     {key = 'x', name = 'XCode'},
     {key = 'i', name = 'Insomnia'},
@@ -100,16 +93,18 @@ config.devs = {
     {key = 'z', name = 'Zoom.us'},
 }
 
--- app environment keybindings. Bundle `id` is prefered, but application `name` will be ok using ctrl + alt.
+-- app environment keybindings. Bundle `id` is preferred, but application `name` will be ok using ctrl + alt.
 config.apps = {
     {key = ',', name = 'System Preferences'},
     {key = '3', name = 'Launchpad'},
+    {key = 'd', name = 'Discord'},
     {key = 'f', name = 'Figma'},
     {key = 'e', name = 'Spark'},
     {key = 'a', name = 'Airtable'},
     {key = 'b', name = 'Brave Browser'},
-    {key = 'c', name = 'Calendar'},
+    {key = 'c', name = 'GoogleCalendar'},
     {key = 'h', name = 'WhatsApp'},
+    {key = 't', name = 'Telegram'},
     {key = 'm', name = 'Spotify'},
     {key = 'r', name = 'Reminders'},
     {key = 'o', name = 'Finder'},
