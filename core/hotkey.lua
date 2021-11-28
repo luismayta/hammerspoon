@@ -1,5 +1,6 @@
 -- luacheck: globals hs spoon
 local strkit = require('core.strkit')
+local fntools = require('core.functions')
 
 local hotkey = {
   registeredHotkey = {},
@@ -90,5 +91,41 @@ hotkey.bindWithCtrlCmdAlt(
       hs.dialog.blockAlert("Show Keys", allHotKey, "Close")
   end
 )
+
+function hotkey.setApps(apps)
+  for _, value in ipairs(apps) do
+      if value.name then
+       hotkey.bindWithCtrlAlt(
+            value.key,
+            "Load",
+          fntools.toggleApplication(value.name)
+        )
+      end
+  end
+end
+
+function hotkey.setDevs(devs)
+  for _, value in ipairs(devs) do
+      if value.name then
+        hotkey.bindWithCtrlCmdAlt(
+            value.key,
+            "Load",
+            fntools.toggleApplication(value.name)
+        )
+      end
+  end
+end
+
+function hotkey.setMiscs(misc)
+  for _, value in ipairs(misc) do
+      if value.name then
+        hotkey.bindWithShiftCmd(
+            value.key,
+            "Load",
+            fntools.toggleApplication(value.name)
+        )
+      end
+  end
+end
 
 return hotkey

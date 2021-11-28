@@ -113,4 +113,19 @@ function obj.reconfigVolume(volume)
   hs.audiodevice.defaultOutputDevice():setVolume(volume)
 end
 
+--- Install Spoons.
+-- @name installSpoons
+-- @param spoons list
+-- @return null
+function obj.installSpoons(spoons)
+  -- Load those Spoons
+  for _, app in pairs(spoons) do
+    if app.settings then
+      Install:andUse(app.name, app.settings)
+    else
+      Install:andUse(app.name)
+    end
+  end
+end
+
 return obj
