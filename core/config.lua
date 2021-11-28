@@ -4,6 +4,7 @@ hs.application.enableSpotlightForNameSearches(true)
 hs.window.animationDuration = 0
 
 local hotkey = require "core.hotkey"
+
 local config = {
   DnsEmpty= "networksetup -setdnsservers Wi-Fi empty",
   DnsCloudflare= "networksetup -setdnsservers Wi-Fi 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4",
@@ -97,24 +98,10 @@ config.devs = {
 config.apps = {
     {key = ',', name = 'System Preferences'},
     {key = '3', name = 'Launchpad'},
-    {key = 'd', name = 'Discord'},
-    {key = 'f', name = 'Figma'},
-    {key = 'e', name = 'Spark'},
-    {key = 'a', name = 'Airtable'},
     {key = 'b', name = 'Brave Browser'},
-    {key = 'c', name = 'GoogleCalendar'},
-    {key = 'h', name = 'WhatsApp'},
-    {key = 't', name = 'Telegram'},
-    {key = 'm', name = 'Spotify'},
     {key = 'r', name = 'Reminders'},
     {key = 'o', name = 'Finder'},
 }
-
--- misc environment keybindings. Bundle `id` is preferred, but application `name` will be ok using shift + cmd.
-config.misc = {
-    {key = 'b', name = 'Binance'},
-}
-
 
 -- -----
 -- Utils
@@ -130,5 +117,11 @@ config.DefaultBrowser = config.browser.brave
 config.devBrowser = config.browser.brave
 config.personalBrowser = config.browser.brave
 config.hangoutsBrowser = config.browser.chrome
+
+-- If we find a file named custom_config.lua we require it.
+local custom_config_file = hs.fs.pathToAbsolute('~/.customrc.lua')
+if custom_config_file ~= nil then
+    require('customrc')
+end
 
 return config

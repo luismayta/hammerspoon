@@ -1,8 +1,9 @@
-print('--------------------------------------------------------------------------------')
-print('Started loading config')
-print('--------------------------------------------------------------------------------')
+-- luacheck: globals hs
+local logger = require("hs.logger")
+local log = logger.new("Init")
 
---------------------------------------------------------------------------------
+log.df("Init hammerspoon")
+
 -- luacheck: globals hs spoon
 hs.loadSpoon("SpoonInstall")
 
@@ -17,19 +18,15 @@ spoon.SpoonInstall:updateAllRepos()
 local speech = require('hs.speech')
 -- Init speaker.
 local speaker = speech.new()
+
+log.df("start modules")
 require('mod.default')
--- require('mod.Memory')
--- require('mod.speed')
 require('mod.widget')
 require('mod.windows')
--- require('mod.switcher')
--- require('mod.notification_center')
 require('mod.wifi')
 require('mod.hooks')
--- require('mod.browser')
 require('mod.apps')
 require('mod.tools')
--- require('mod.vim')
 
 -- Speak something after configuration success.
 speaker:speak(os.getenv("USER") .. ", I am online!")
