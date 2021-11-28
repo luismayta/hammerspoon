@@ -110,6 +110,12 @@ config.apps = {
     {key = 'o', name = 'Finder'},
 }
 
+-- misc environment keybindings. Bundle `id` is preferred, but application `name` will be ok using shift + cmd.
+config.misc = {
+    {key = 'b', name = 'Binance'},
+}
+
+
 -- -----
 -- Utils
 -- -----
