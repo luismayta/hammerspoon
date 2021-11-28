@@ -190,9 +190,7 @@
         "notes": [],
         "signature": "SpoonInstall:asyncInstallSpoonFromZipURL(url, callback)",
         "type": "Method",
-        "returns": [
-          " * `true` if the installation was correctly initiated (i.e. the URL is valid), `false` otherwise"
-        ],
+        "returns": [" * `true` if the installation was correctly initiated (i.e. the URL is valid), `false` otherwise"],
         "name": "asyncInstallSpoonFromZipURL",
         "desc": "Asynchronously download a Spoon zip file and install it."
       },
@@ -215,10 +213,7 @@
       },
       {
         "doc": "Asynchronously fetch the information about the contents of a Spoon repository\n\nParameters:\n * repo - name of the repository to update. Defaults to `\"default\"`.\n * callback - if given, a function to be called after the update finishes (also if it fails). The function will receive the following arguments:\n   * repo - name of the repository\n   * success - boolean indicating whether the update succeeded\n\nReturns:\n * `true` if the update was correctly initiated (i.e. the repo name is valid), `nil` otherwise\n\nNotes:\n * For now, the repository data is not persisted, so you need to update it after every restart if you want to use any of the install functions.",
-        "stripped_doc": [
-          "Asynchronously fetch the information about the contents of a Spoon repository",
-          ""
-        ],
+        "stripped_doc": ["Asynchronously fetch the information about the contents of a Spoon repository", ""],
         "def": "SpoonInstall:asyncUpdateRepo(repo, callback)",
         "parameters": [
           " * repo - name of the repository to update. Defaults to `\"default\"`.",
@@ -319,15 +314,9 @@
       },
       {
         "doc": "Synchronously fetch the information about the contents of a Spoon repository\n\nParameters:\n * repo - name of the repository to update. Defaults to `\"default\"`.\n\nReturns:\n * `true` if the update was successful, `nil` otherwise\n\nNotes:\n * This is a synchronous call, which means Hammerspoon will be blocked until it finishes. For use in your configuration files, it's advisable to use `SpoonInstall.asyncUpdateRepo()` instead.\n * For now, the repository data is not persisted, so you need to update it after every restart if you want to use any of the install functions.",
-        "stripped_doc": [
-          "Synchronously fetch the information about the contents of a Spoon repository",
-          ""
-        ],
+        "stripped_doc": ["Synchronously fetch the information about the contents of a Spoon repository", ""],
         "def": "SpoonInstall:updateRepo(repo)",
-        "parameters": [
-          " * repo - name of the repository to update. Defaults to `\"default\"`.",
-          ""
-        ],
+        "parameters": [" * repo - name of the repository to update. Defaults to `\"default\"`.", ""],
         "notes": [
           " * This is a synchronous call, which means Hammerspoon will be blocked until it finishes. For use in your configuration files, it's advisable to use `SpoonInstall.asyncUpdateRepo()` instead.",
           " * For now, the repository data is not persisted, so you need to update it after every restart if you want to use any of the install functions."
@@ -344,10 +333,7 @@
     "Method": [
       {
         "doc": "Asynchronously fetch the information about the contents of a Spoon repository\n\nParameters:\n * repo - name of the repository to update. Defaults to `\"default\"`.\n * callback - if given, a function to be called after the update finishes (also if it fails). The function will receive the following arguments:\n   * repo - name of the repository\n   * success - boolean indicating whether the update succeeded\n\nReturns:\n * `true` if the update was correctly initiated (i.e. the repo name is valid), `nil` otherwise\n\nNotes:\n * For now, the repository data is not persisted, so you need to update it after every restart if you want to use any of the install functions.",
-        "stripped_doc": [
-          "Asynchronously fetch the information about the contents of a Spoon repository",
-          ""
-        ],
+        "stripped_doc": ["Asynchronously fetch the information about the contents of a Spoon repository", ""],
         "def": "SpoonInstall:asyncUpdateRepo(repo, callback)",
         "parameters": [
           " * repo - name of the repository to update. Defaults to `\"default\"`.",
@@ -370,15 +356,9 @@
       },
       {
         "doc": "Synchronously fetch the information about the contents of a Spoon repository\n\nParameters:\n * repo - name of the repository to update. Defaults to `\"default\"`.\n\nReturns:\n * `true` if the update was successful, `nil` otherwise\n\nNotes:\n * This is a synchronous call, which means Hammerspoon will be blocked until it finishes. For use in your configuration files, it's advisable to use `SpoonInstall.asyncUpdateRepo()` instead.\n * For now, the repository data is not persisted, so you need to update it after every restart if you want to use any of the install functions.",
-        "stripped_doc": [
-          "Synchronously fetch the information about the contents of a Spoon repository",
-          ""
-        ],
+        "stripped_doc": ["Synchronously fetch the information about the contents of a Spoon repository", ""],
         "def": "SpoonInstall:updateRepo(repo)",
-        "parameters": [
-          " * repo - name of the repository to update. Defaults to `\"default\"`.",
-          ""
-        ],
+        "parameters": [" * repo - name of the repository to update. Defaults to `\"default\"`.", ""],
         "notes": [
           " * This is a synchronous call, which means Hammerspoon will be blocked until it finishes. For use in your configuration files, it's advisable to use `SpoonInstall.asyncUpdateRepo()` instead.",
           " * For now, the repository data is not persisted, so you need to update it after every restart if you want to use any of the install functions."
@@ -470,9 +450,7 @@
         "notes": [],
         "signature": "SpoonInstall:asyncInstallSpoonFromZipURL(url, callback)",
         "type": "Method",
-        "returns": [
-          " * `true` if the installation was correctly initiated (i.e. the URL is valid), `false` otherwise"
-        ],
+        "returns": [" * `true` if the installation was correctly initiated (i.e. the URL is valid), `false` otherwise"],
         "name": "asyncInstallSpoonFromZipURL",
         "desc": "Asynchronously download a Spoon zip file and install it."
       },
