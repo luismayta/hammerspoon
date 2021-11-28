@@ -10,6 +10,10 @@ name: hammerspoon
 email:
   support: support@hadenlabs.com
 
+confluence:
+  space: Hammerspoon
+  title: Project
+
 # Logo for this project
 #logo: docs/logo.png
 
@@ -25,8 +29,8 @@ badges:
     image: https://img.shields.io/github/release/luismayta/hammerspoon
     url: https://github.com/luismayta/hammerspoon/releases
   - name: Lint
-    image: https://img.shields.io/github/workflow/status/hadenlabs/ansible-role-template/lint-code
-    url: https://github.com/hadenlabs/ansible-role-template/actions?workflow=lint-code
+    image: https://img.shields.io/github/workflow/status/luismayta/hammerspoon/lint-code
+    url: https://github.com/luismayta/hammerspoon/actions?workflow=lint-code
   - name: pre-commit
     image: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
     url: https://github.com/pre-commit/pre-commit
@@ -56,5 +60,5 @@ installation:
 # How to use this project
 usage: |-
   ```bash
-  make setup
+  task setup
   ```
