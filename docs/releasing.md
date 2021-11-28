@@ -1,3 +1,13 @@
+<!-- Space: Hammerspoon -->
+<!-- Parent: Project -->
+<!-- Title: Releasing -->
+
+<!-- Label: Hammerspoon -->
+<!-- Label: Project -->
+<!-- Label: Releasing -->
+<!-- Include: docs/disclaimer.md -->
+<!-- Include: ac:toc -->
+
 # Releasing
 
 ## Bump a new version
