@@ -1,11 +1,7 @@
-<!-- Space: Hammerspoon -->
-<!-- Parent: Project -->
-<!-- Title: Authors -->
-
 # Authors
 
 ## Leads
 
-- Luis Mayta [@slovacus](https://github.com/luismayta)
+- Luis Mayta [@luismayta](https://github.com/luismayta)
 
 ## Contributors (chronological)
