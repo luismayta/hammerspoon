@@ -20,6 +20,5 @@ hotkey.bindWithAlt(
   end
 )
 
-
 -- hs.hotkey.bind(hyper, "D", screenToRight)
 -- hs.hotkey.bind(hyper, "A", screenToLeft)
