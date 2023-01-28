@@ -1,12 +1,11 @@
-<!-- Space: Hammerspoon -->
-<!-- Parent: Project -->
-<!-- Title: Contributing GitFlow -->
-
+<!-- Space: Projects -->
+<!-- Parent: Hammerspoon -->
+<!-- Title: Contributing GitFlow Hammerspoon -->
 <!-- Label: Hammerspoon -->
 <!-- Label: Project -->
 <!-- Label: Contributing -->
 <!-- Label: GitFlow -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->
 
 To contribute to hammerspoon project on [GitHub](https://github.com/luismayta/hammerspoon), We use Gitflow (See more [here](https://datasift.github.io/gitflow/IntroducingGitFlow.html)) In a nutshell, it means that you should branch from the main repository and contribute back by making [pull request](https://github.com/luismayta/hammerspoon/pulls).
@@ -17,7 +16,7 @@ To contribute to hammerspoon project on [GitHub](https://github.com/luismayta/ha
 
 To follow the instructions in this guide and start contributing to hammerspoon project on Gitlab:
 
-1.  **Fork** the repo on GitLab
+1.  **Fork** the repo on GitHub
 2.  **Clone** the project to your own machine
 
 To synchronize with the main repository, add it to the remotes:
@@ -63,7 +62,7 @@ To resolve a conflict, run the following commands.
 
 ```bash
 # checkout a branch you open MR from
-git fetch upstream # assuming upstream is rfid/hammerspoon
+git fetch upstream # assuming upstream is luismayta/hammerspoon
 git merge upstream/merge_branch # Where merge_branch is a branch you open merge request against.
 # resolve merge requests
 git add changed_files

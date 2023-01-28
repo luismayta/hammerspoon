@@ -1,6 +1,3 @@
- <!-- Space: Hammerspoon -->
-<!-- Title: Project -->
-
 <!--
 
 
@@ -15,7 +12,7 @@
 
   -->
 
-[![Latest Release](https://img.shields.io/github/release/luismayta/hammerspoon)](https://github.com/luismayta/hammerspoon/releases) [![Lint](https://img.shields.io/github/workflow/status/luismayta/hammerspoon/lint-code)](https://github.com/luismayta/hammerspoon/actions?workflow=lint-code) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735)](https://keepachangelog.com)
+[![Latest Release](https://img.shields.io/github/release/luismayta/hammerspoon)](https://github.com/luismayta/hammerspoon/releases) [![Lint](https://img.shields.io/github/workflow/status/luismayta/hammerspoon/lint-code)](https://github.com/luismayta/hammerspoon/actions?workflow=lint-code) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange)](https://keepachangelog.com)
 
 # hammerspoon
 
@@ -25,6 +22,7 @@ hammerspoon for code.
 
 This is a list of applications that need to be installed previously to enjoy all the goodies of this configuration.
 
+- [gomplate](https://github.com/hairyhenderson/gomplate)
 - [Git](http://git-scm.com)
 - [Curl](https://github.com/bagder/curl)
 - [Wget](http://www.gnu.org/software/wget)
@@ -41,6 +39,8 @@ This is a list of applications that need to be installed previously to enjoy all
 
 ## Usage
 
+# How to use this project
+
 ```bash
 task setup
 ```
@@ -53,22 +53,7 @@ File a GitHub [issue](https://github.com/luismayta/hammerspoon/issues).
 
 ## Contributing
 
-### Bug Reports & Feature Requests
-
-Please use the [issue tracker](https://github.com/luismayta/hammerspoon/issues) to report any bugs or file feature requests.
-
-### Development
-
-In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
-
-1.  **Fork** the repo on GitHub
-2.  **Clone** the project to your own machine
-3.  **Commit** changes to your own branch
-4.  **Push** your work back up to your fork
-
-5.  Submit a **Pull Request** so that we can review your changes
-
-**NOTE:** Be sure to rebase the latest changes from "upstream" before making a pull request!
+See [Contributing](./docs/contributing.md).
 
 ## Module Versioning
 
@@ -87,7 +72,7 @@ Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following co
 
 ## Copyright
 
-Copyright © 2018-2021 [Hadenlabs](https://hadenlabs.com)
+Copyright © 2018-2022 [Hadenlabs](https://hadenlabs.com)
 
 ## Trademarks
 
