@@ -1,9 +1,8 @@
-<!-- Space: Hammerspoon -->
-<!-- Parent: Project -->
-<!-- Title: Project Examples -->
-
+<!-- Space: Projects -->
+<!-- Parent: Hammerspoon -->
+<!-- Title: Examples Hammerspoon -->
 <!-- Label: Examples -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->
 
 ### common

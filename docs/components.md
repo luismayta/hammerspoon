@@ -1,11 +1,10 @@
-<!-- Space: Hammerspoon -->
-<!-- Parent: Project -->
-<!-- Title: Components -->
-
+<!-- Space: Projects -->
+<!-- Parent: Hammerspoon -->
+<!-- Title: Components Hammerspoon -->
 <!-- Label: Hammerspoon -->
 <!-- Label: Project -->
 <!-- Label: Components -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: disclaimer.md -->
 <!-- Include: ac:toc -->
 
 # components
