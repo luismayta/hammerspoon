@@ -108,14 +108,23 @@ config.devBrowser = config.browser.brave
 config.personalBrowser = config.browser.brave
 config.hangoutsBrowser = config.browser.chrome
 
--- Load the custom config
-local customConfigFile = hs.fs.pathToAbsolute(hs.configdir .. "/customConfig.lua")
+local custom_config_file_path = os.getenv("HOME") .. "/.config/hammerspoon/config.lua"
 
-if customConfigFile then
-  local customConfig = require("customConfig")
-  for k, v in pairs(customConfig) do
+-- Load the custom config
+local custom_config_file = io.open(hs.fs.pathToAbsolute(custom_config_file_path), "r")
+
+if not custom_config_file then
+  return config
+end
+
+local success, custom_config = pcall(require, custom_config_file)
+if success then
+  for k, v in pairs(custom_config) do
     config[k] = v
   end
+else
+  -- Error handling
+  print("Error loading custom config file: " .. custom_config)
 end
 
 return config
