@@ -108,23 +108,15 @@ config.devBrowser = config.browser.brave
 config.personalBrowser = config.browser.brave
 config.hangoutsBrowser = config.browser.chrome
 
-local custom_config_file_path = os.getenv("HOME") .. "/.config/hammerspoon/config.lua"
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/hammerspoon/?.lua"
 
--- Load the custom config
-local custom_config_file = io.open(hs.fs.pathToAbsolute(custom_config_file_path), "r")
-
-if not custom_config_file then
+local success, custom_config = pcall(require, "custom")
+if not success then
   return config
 end
 
-local success, custom_config = pcall(require, custom_config_file)
-if success then
-  for k, v in pairs(custom_config) do
-    config[k] = v
-  end
-else
-  -- Error handling
-  print("Error loading custom config file: " .. custom_config)
+for k, v in pairs(custom_config) do
+  config[k] = v
 end
 
 return config
