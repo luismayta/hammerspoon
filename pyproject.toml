@@ -38,6 +38,10 @@ docs = ["mkdocs", "mkdocs-material"]
 search = 'sonar.projectVersion={current_version}'
 replace = 'sonar.projectVersion={new_version}'
 
+[tool.poetry_bumpversion.file."hammerspoon.rockspec"]
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
