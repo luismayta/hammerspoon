@@ -1,4 +1,4 @@
--- luacheck: globals hs
+-- luacheck: globals hs spoon
 local logger = require("hs.logger")
 local log = logger.new("Init")
 
@@ -15,18 +15,19 @@ spoon.SpoonInstall.repos.doiken = {
 spoon.SpoonInstall.use_syncinstall = true
 spoon.SpoonInstall:updateAllRepos()
 
-local speech = require('hs.speech')
+local speech = require("hs.speech")
 -- Init speaker.
 local speaker = speech.new()
 
 log.df("start modules")
-require('mod.default')
-require('mod.widget')
-require('mod.windows')
-require('mod.wifi')
-require('mod.hooks')
-require('mod.apps')
-require('mod.tools')
+require("mod.default")
+require("mod.widget")
+require("mod.windows")
+require("mod.wifi")
+require("mod.hooks")
+require("mod.apps")
+require("mod.tools")
+log.df("finished modules")
 
 -- Speak something after configuration success.
 speaker:speak(os.getenv("USER") .. ", I am online!")
