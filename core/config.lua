@@ -35,15 +35,6 @@ config.spoons = {
     },
   },
   {
-    name = "WindowHalfsAndThirds",
-    settings = {
-      config = {
-        use_frame_correctness = true,
-      },
-      hotkeys = "default",
-    },
-  },
-  {
     name = "WindowScreenLeftAndRight",
     settings = {
       hotkeys = "default",
@@ -75,6 +66,15 @@ config.spoons = {
   },
   {
     name = "FnMate",
+  },
+  {
+    name = "WifiNotifier",
+    settings = {
+      start = true,
+    },
+  },
+  {
+    name = "WinWin",
   },
 }
 
