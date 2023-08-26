@@ -568,3 +568,7 @@ customConfig.lua
 .external_modules
 vendor
 
+/luarocks
+/lua
+/lua_modules
+/.luarocks
