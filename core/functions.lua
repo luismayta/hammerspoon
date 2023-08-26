@@ -6,12 +6,14 @@ local obj = {}
 -- debugging
 local log = logger.new("functions", "debug")
 
+-- hs.loadSpoon("SpoonInstall")
+local spoon_install = spoon.SpoonInstall
+
 ---------------------------------------------
 -- OS X isDoNotDisturbEnabled
 ---------------------------------------------
 function obj.isDoNotDisturbEnabled()
-  local command =
-    'defaults -currentHost read com.apple.notificationcenterui doNotDisturb'
+  local command = "defaults -currentHost read com.apple.notificationcenterui doNotDisturb"
 
   local mode, _, _, _ = hs.execute(command)
 
@@ -22,9 +24,9 @@ end
 -- OS X Toggle Status Notification
 ---------------------------------------------
 function obj.toggleDoNotDisturb()
-  local _, status, type, rc = hs.execute('do-not-disturb toggle', true)
+  local _, status, type, rc = hs.execute("do-not-disturb toggle", true)
 
-  if (not (status == true and type == 'exit' and rc == 0)) then
+  if not (status == true and type == "exit" and rc == 0) then
     hs.alert("Whoops! Toggling 'Do Not Disturb' failed.")
 
     local alertDurationInSeconds = 4
@@ -41,13 +43,12 @@ end
 -- OS X Notification SetStatusNotification
 ---------------------------------------------
 function obj.setStatusNotification(status)
-
-  local script ="do-not-disturb off"
-  if status == 'enable' then
-    script ="do-not-disturb on"
+  local script = "do-not-disturb off"
+  if status == "enable" then
+    script = "do-not-disturb on"
   end
 
-  local _, status, exit, code = hs.execute(script, true)
+  local _, _, _, code = hs.execute(script, true)
   log:d(code)
   return status
 end
@@ -80,18 +81,17 @@ function obj.clearNotifications()
     log:d(err)
     error(err)
   end
-  local _, res = response
-  return res
+  return response
 end
 
 function obj.toggleApplication(name)
-   return function()
-      local app = hs.application.find(name)
-      if not app or app:isHidden() then
-         hs.application.launchOrFocus(name)
-      elseif hs.application.frontmostApplication() ~= app then
-         app:activate()
-      end
+  return function()
+    local app = hs.application.find(name)
+    if not app or app:isHidden() then
+      hs.application.launchOrFocus(name)
+    elseif hs.application.frontmostApplication() ~= app then
+      app:activate()
+    end
   end
 end
 
@@ -121,9 +121,9 @@ function obj.installSpoons(spoons)
   -- Load those Spoons
   for _, app in pairs(spoons) do
     if app.settings then
-      Install:andUse(app.name, app.settings)
+      spoon_install:andUse(app.name, app.settings)
     else
-      Install:andUse(app.name)
+      spoon_install:andUse(app.name)
     end
   end
 end

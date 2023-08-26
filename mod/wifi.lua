@@ -1,12 +1,11 @@
 -- luacheck: globals hs spoon
-local fntools = require('core.functions')
-local settings = require('core.config')
+local fntools = require("core.functions")
+local settings = require("core.config")
 
-hs.loadSpoon("SpoonInstall")
-local Install=spoon.SpoonInstall
+-- hs.loadSpoon("SpoonInstall")
+local spoon_install = spoon.SpoonInstall
 
-Install:andUse(
-"WiFiTransitions",{
+spoon_install:andUse("WiFiTransitions", {
   config = {
     actions = {
       -- { -- Test action just to see the SSID transitions
@@ -15,65 +14,64 @@ Install:andUse(
       --    end
       -- },
       {
-          to = "Evilcorp",
-          fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(fntools.reconfigVolume, 80)
-            hs.execute(settings.DnsEmpty)
-            hs.execute(settings.DnsCloudflare)
-          end
+        to = "Evilcorp",
+        fn = function(_, _, _, _)
+          hs.fnutils.partial(fntools.reconfigVolume, 80)
+          hs.execute(settings.DnsEmpty)
+          hs.execute(settings.DnsCloudflare)
+        end,
       },
       {
-          from = "ulwifiT",
-          fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(fntools.reconfigVolume, 25)
-            hs.execute(settings.DnsEmpty)
-            hs.execute(settings.DnsCloudflare)
-          end
+        from = "ulwifiT",
+        fn = function(_, _, _, _)
+          hs.fnutils.partial(fntools.reconfigVolume, 25)
+          hs.execute(settings.DnsEmpty)
+          hs.execute(settings.DnsCloudflare)
+        end,
       },
       {
-          from = "ulwifi",
-          fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(fntools.reconfigVolume, 25)
-            hs.execute(settings.DnsEmpty)
-            hs.execute(settings.DnsCloudflare)
-          end
+        from = "ulwifi",
+        fn = function(_, _, _, _)
+          hs.fnutils.partial(fntools.reconfigVolume, 25)
+          hs.execute(settings.DnsEmpty)
+          hs.execute(settings.DnsCloudflare)
+        end,
       },
       {
-          to = "ulwifiT",
-          fn = function(_, _, prev_ssid, new_ssid)
-            hs.execute(settings.DnsEmpty)
-          end
+        to = "ulwifiT",
+        fn = function(_, _, _, _)
+          hs.execute(settings.DnsEmpty)
+        end,
       },
       {
-          to = "ulwifi",
-          fn = function(_, _, prev_ssid, new_ssid)
-            hs.execute(settings.DnsEmpty)
-          end
+        to = "ulwifi",
+        fn = function(_, _, _, _)
+          hs.execute(settings.DnsEmpty)
+        end,
       },
       {
-          to = "Wayra 5G",
-         fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(fntools.reconfigVolume, 50)
-            hs.execute(settings.DnsEmpty)
-          end
+        to = "Wayra 5G",
+        fn = function(_, _, _, _)
+          hs.fnutils.partial(fntools.reconfigVolume, 50)
+          hs.execute(settings.DnsEmpty)
+        end,
       },
       {
-          to = "VIPAC-INVITADOS",
-          fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(fntools.reconfigVolume, 50)
-            hs.execute(settings.DnsEmpty)
-          end
+        to = "VIPAC-INVITADOS",
+        fn = function(_, _, _, _)
+          hs.fnutils.partial(fntools.reconfigVolume, 50)
+          hs.execute(settings.DnsEmpty)
+        end,
       },
       {
-          from = "VIPAC-INVITADOS",
-          fn = function(_, _, prev_ssid, new_ssid)
-            hs.fnutils.partial(fntools.reconfigVolume, 25)
-            hs.execute(settings.DnsEmpty)
-            hs.execute(settings.DnsCloudflare)
-          end
+        from = "VIPAC-INVITADOS",
+        fn = function(_, _, _, _)
+          hs.fnutils.partial(fntools.reconfigVolume, 25)
+          hs.execute(settings.DnsEmpty)
+          hs.execute(settings.DnsCloudflare)
+        end,
       },
-    }
+    },
   },
   start = true,
-}
-)
+})

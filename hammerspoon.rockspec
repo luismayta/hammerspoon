@@ -23,7 +23,6 @@ build = {
     ["core.fntools"] = "core/fntools.lua",
     ["core.functions"] = "core/functions.lua",
     ["core.hotkey"] = "core/hotkey.lua",
-    ["core.questionable_utils"] = "core/questionable_utils.lua",
     ["core.strkit"] = "core/strkit.lua",
     init = "init.lua",
     ["mod.apps"] = "mod/apps.lua",
