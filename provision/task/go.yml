@@ -91,6 +91,22 @@ tasks:
     deps:
       - task: check:go
 
+  mockery:
+    desc: Refreshes the mock implementations in ./mocks.
+    preconditions:
+      - sh: which mockery
+        msg: mockery is not installed. Please install it using the following command.
+
+          $ go install github.com/vektra/mockery/v2@v2.38.0
+    cmds:
+      - mockery --config .ci/config/mockery.yaml
+
+  generate:
+    desc: "Generate code with Wire"
+    cmds:
+      - go get github.com/google/wire/cmd/wire
+      - wire ./...
+
   test:
     desc: Run go test against code.
     run: once

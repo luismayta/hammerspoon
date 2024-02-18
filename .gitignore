@@ -563,12 +563,10 @@ TMP_CHANGELOG.md
 .task
 .terraform.lock.hcl
 *.lock.hcl
+*.lock
 *.zip
 customConfig.lua
 .external_modules
 vendor
+.DS_Store
 
-/luarocks
-/lua
-/lua_modules
-/.luarocks
