@@ -1,5 +1,8 @@
 -- luacheck: globals hs spoon
-local config = require("core.config")
 local fn = require("core.functions")
 
-fn.installSpoons(config.spoons)
+local function init(config)
+  fn.installSpoons(config.spoons)
+end
+
+return init
