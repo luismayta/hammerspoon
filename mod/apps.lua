@@ -18,7 +18,7 @@ local function init(config)
 
   hotkey.setApps(config.apps)
   hotkey.setDevs(config.devs)
-  -- hotkey.setMiscs(config.misc)
+  hotkey.setMiscs(config.misc)
 
   hotkey.bindWithCtrlAlt("`", "Load Open", function()
     os.execute("open ~")

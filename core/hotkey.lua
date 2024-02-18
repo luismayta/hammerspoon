@@ -50,7 +50,7 @@ function hotkey.bindWithCtrlCmd(key, desc, fn)
 end
 
 function hotkey.bindWithCtrlCmdAlt(key, desc, fn)
-  hotkey.bind({ "CTRL", "CMD", "ALT" }, key, desc, fn)
+  hotkey.bind(hotkey.cmdHyper, key, desc, fn)
 end
 
 function hotkey.bindWithCtrlAlt(key, desc, fn)
