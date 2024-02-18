@@ -1,24 +1,30 @@
 -- luacheck: globals hs spoon
-local hotkey = require("core.hotkey")
-local fntools = require("core.functions")
 
-hotkey.bindWithAlt(
-  'm', 'Toggle Full Screen', function ()
-    hs.window.focusedWindow():toggleFullScreen()
-  end
-)
+local function init(config)
 
--- move screen
-hotkey.bindWithAlt(
-  'l', 'Move to right', function ()
-   fntools.goRight()
-  end
-)
-hotkey.bindWithAlt(
-  'h', 'Move to left', function ()
-   fntools.goLeft()
-  end
-)
+  local hotkey = require("core.hotkey")
+  local fntools = require("core.functions")
 
--- hs.hotkey.bind(hyper, "D", screenToRight)
--- hs.hotkey.bind(hyper, "A", screenToLeft)
+  hotkey.bindWithAlt(
+    'm', 'Toggle Full Screen', function ()
+      hs.window.focusedWindow():toggleFullScreen()
+    end
+  )
+
+  -- move screen
+  hotkey.bindWithAlt(
+    'l', 'Move to right', function ()
+     fntools.goRight()
+    end
+  )
+  hotkey.bindWithAlt(
+    'h', 'Move to left', function ()
+     fntools.goLeft()
+    end
+  )
+
+  -- hs.hotkey.bind(hyper, "D", screenToRight)
+  -- hs.hotkey.bind(hyper, "A", screenToLeft)
+end
+
+return init

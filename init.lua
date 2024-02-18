@@ -20,14 +20,16 @@ spoon.SpoonInstall.repos.doiken = {
 spoon.SpoonInstall.use_syncinstall = true
 spoon.SpoonInstall:updateAllRepos()
 
+local config = require("core.config")
+
 log.df("Load Modules Starting")
-require("mod.default")
-require("mod.widget")
-require("mod.windows")
-require("mod.wifi")
-require("mod.hooks")
-require("mod.apps")
-require("mod.tools")
+require("mod.default")(config)
+require("mod.widget")(config)
+require("mod.windows")(config)
+require("mod.wifi")(config)
+require("mod.hooks")(config)
+require("mod.apps")(config)
+require("mod.tools")(config)
 log.df("Load Modules Finished")
 
 if speaker then
