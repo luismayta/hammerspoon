@@ -11,6 +11,7 @@ HAMMERSPOON_REPO_BRANCH="develop"
 HAMMERSPOON_ROOT_PATH="${HOME}/.hammerspoon"
 HAMMERSPOON_MESSAGE_BREW="Please install brew or use antibody bundle luismayta/zsh-brew branch:develop"
 HAMMERSPOON_MESSAGE_DONE="Keep calm and use Hammerspoon!"
+HAMMERSPOON_BACKUP_PATH="${HOME}/.backup"
 
 
 message_error() {
@@ -76,8 +77,9 @@ hammerspoon::post_install() {
     message_info "Looking for an existing hammerspoon config..."
     if [ -d "${HAMMERSPOON_ROOT_PATH}" ]; then
         message_warning "Found ${HAMMERSPOON_ROOT_PATH}"
-        message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
-        mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_ROOT_PATH}/hammerspoon.bak"
+        message_info "You will see your old ${HAMMERSPOON_ROOT_PATH} as ${HAMMERSPOON_BACKUP_PATH}/hammerspoon.bak"
+        mkdir -p "${HAMMERSPOON_BACKUP_PATH}"
+        mv "${HAMMERSPOON_ROOT_PATH}" "${HAMMERSPOON_BACKUP_PATH}/hammerspoon.bak"
     fi
     # Prevent the cloned repository from having insecure permissions. Failing to do
     # so causes compinit() calls to fail with "command not found: compdef" errors
