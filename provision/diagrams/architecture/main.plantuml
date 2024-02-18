@@ -1,0 +1,24 @@
+@startuml
+skinparam roundCorner 15
+left to right direction
+
+file main.tf as resources
+file variables.tf as variables
+file providers.tf as providers
+
+cloud github {
+}
+
+cloud cloudflare {
+}
+
+cloudflare --> github
+
+control "terragrunt apply" as terraform_command
+resources <-- terraform_command
+variables <-- terraform_command
+providers <-- terraform_command
+
+terraform_command --> github
+terraform_command --> cloudflare
+@enduml

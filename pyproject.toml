@@ -9,30 +9,77 @@ repository = "https://github.com/luismayta/hammerspoon"
 
 [tool.poetry.dependencies]
 python = "^3.8,<3.12"
-boto3 = "^1.26.130"
+boto3 = "^1.34.9"
+
+[tool.poetry.group.dev]
+optional = true
 
 [tool.poetry.group.dev.dependencies]
-requests = "^2.28.2"
-bridgecrew = "*"
+requests = "^2.31.0"
+bridgecrew = "^3.1.46"
+isort = "^5.13.2"
+parso = "^0.8.3"
+pycodestyle = "^2.11.1"
+pydocstyle = "^6.3.0"
+pygments = "^2.17.2"
+pylint = "^3.0.3"
+bumpversion = "^0.6.0"
+ipdb = "^0.13.13"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+pymdown-extensions = "^10.2.1"
 doc8 = "*"
-grip = "*"
-isort = "*"
-mkdocs = "*"
-mkdocs-material = "*"
-mypy = "*"
-parso = "*"
-pre-commit = "*"
-pycodestyle = "*"
-pydocstyle = "*"
-pygments = "*"
-pylint = "*"
-pymdown-extensions = "*"
-pytest = ">=6.2.4"
-black = "*"
-bumpversion = "*"
+grip = "^4.6.1"
+mkdocs = "^1.5.2"
+mkdocs-material = "^9.2.6"
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+mock = "^5.1.0"
+pytest-mock = "^3.11.1"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+freezegun = "^1.2.2"
+responses = "^0.23.3"
+pytest-asyncio = "^0.21.1"
+pyhamcrest = "^2.0.4"
+factory-boy = "^3.3.0"
+
+[tool.poetry.group.test_integration]
+optional = true
+
+[tool.poetry.group.test_integration.dependencies]
+torch = "^2.0.1"
+
+[tool.poetry.group.lint]
+optional = true
+
+[tool.poetry.group.lint.dependencies]
+pre-commit = "^3.3.3"
+ruff = "^0.0.286"
+black = "^23.12.1"
+
+[tool.poetry.group.typing]
+optional = true
+
+[tool.poetry.group.typing.dependencies]
+mypy = "^1.5.1"
+
+[tool.mypy]
+ignore_missing_imports = "True"
+disallow_untyped_defs = "True"
+exclude = ["notebooks"]
 
 [tool.poetry.extras]
 docs = ["mkdocs", "mkdocs-material"]
+
+[tool.black]
+line-length = 90
 
 [tool.poetry_bumpversion.file."sonar-project.properties"]
 search = 'sonar.projectVersion={current_version}'
