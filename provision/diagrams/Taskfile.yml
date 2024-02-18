@@ -2,6 +2,14 @@
 
 version: "3"
 
+vars:
+  FILES_PLANTUML:
+    sh: >-
+      find ./ -type f -name '*.plantuml'
+      | grep -v '.terraform'
+      | sort -u
+      | xargs
+
 tasks:
   build:
     desc: Build Diagrams Plantuml.
@@ -23,24 +31,16 @@ tasks:
       - >-
         rsync -avhP --remove-source-files
         --include='*.png' --include='*/'
-        --exclude='*'
-        provision/diagrams/ ./
+        --exclude='*' provision/diagrams/ docs/images/diagrams/
 
   make:
     desc: generate files plantuml.
     cmds:
       - cmd: echo {{.FILES_PLANTUML}}
-      - cmd: |-
-          docker run
-          --platform linux/amd64
-          --rm
-          --workdir /data
-          -v {{.PWD}}:/data
-          infosisarg/plantuml {{.FILES_PLANTUML}}
-        vars:
-          FILES_PLANTUML:
-            sh: >-
-              find ./ -type f -name '*.plantuml'
-              | grep -v '.terraform'
-              | sort -u
-              | xargs
+      - >-
+        docker run
+        --platform linux/amd64
+        --rm
+        --workdir /data
+        -v {{.PWD}}:/data
+        hadenlabs/plantuml {{.FILES_PLANTUML}}
