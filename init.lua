@@ -2,24 +2,25 @@
 local logger = require("hs.logger")
 local log = logger.new("Init")
 
-log.df("Init hammerspoon")
+log.df("Starting Hammerspoon")
 
--- luacheck: globals hs spoon
+local success, speech = pcall(require, "hs.speech")
+if not success then
+    log.ef("Error in 'hs.speech': %s", speech)
+    return
+end
+
+local speaker = speech.new()
+
 hs.loadSpoon("SpoonInstall")
-
 spoon.SpoonInstall.repos.doiken = {
-  url = "https://github.com/doiken/Spoons",
-  desc = "doiken's spoon repository",
+    url = "https://github.com/doiken/Spoons",
+    desc = "Repositorio de cucharas de doiken",
 }
-
 spoon.SpoonInstall.use_syncinstall = true
 spoon.SpoonInstall:updateAllRepos()
 
-local speech = require("hs.speech")
--- Init speaker.
-local speaker = speech.new()
-
-log.df("start modules")
+log.df("Load Modules Starting")
 require("mod.default")
 require("mod.widget")
 require("mod.windows")
@@ -27,7 +28,8 @@ require("mod.wifi")
 require("mod.hooks")
 require("mod.apps")
 require("mod.tools")
-log.df("finished modules")
+log.df("Load Modules Finished")
 
--- Speak something after configuration success.
-speaker:speak(os.getenv("USER") .. ", I am online!")
+if speaker then
+    speaker:speak(os.getenv("USER") .. ", ¡Happy Coding!")
+end
