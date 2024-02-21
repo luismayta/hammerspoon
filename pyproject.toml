@@ -62,7 +62,7 @@ optional = true
 [tool.poetry.group.lint.dependencies]
 pre-commit = "^3.3.3"
 ruff = "^0.2.0"
-black = "^23.12.1"
+black = "^24.0.0"
 
 [tool.poetry.group.typing]
 optional = true
