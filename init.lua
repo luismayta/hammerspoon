@@ -30,6 +30,7 @@ require("mod.wifi")(config)
 require("mod.hooks")(config)
 require("mod.apps")(config)
 require("mod.tools")(config)
+require("mod.work")(config)
 log.df("Load Modules Finished")
 
 if speaker then
