@@ -8,7 +8,7 @@ readme = "README.md"
 repository = "https://github.com/luismayta/hammerspoon"
 
 [tool.poetry.dependencies]
-python = "^3.8,<3.12"
+python = "<3.14"
 boto3 = "^1.34.9"
 
 [tool.poetry.group.dev]
