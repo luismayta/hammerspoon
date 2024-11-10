@@ -26,6 +26,10 @@ local function init(_)
     hotkeys = {
       bindHotkeys = { hotkey.cmdHyper, "c" },
     },
+    notification = hs.notify.new({ title = "Done! 🍒", withdrawAfter = 5}),
+    duration = 5,
+    alertDuration = 5,
+
   })
 
   log.df("SpoonInstall Load Success")
