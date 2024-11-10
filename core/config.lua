@@ -1,4 +1,5 @@
 -- luacheck: globals hs spoon
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/hammerspoon/?.lua"
 
 hs.application.enableSpotlightForNameSearches(true)
 hs.window.animationDuration = 0
@@ -80,48 +81,46 @@ config.spoons = {
 
 -- app environment keybindings. Bundle `id` is preferred, but application `name` will be ok using cmd + ctrl + alt.
 config.devs = {
-  {key = 'b', name = 'Bitwarden'},
-  {key = 'e', name = 'Vscodium'},
-  {key = 't', name = 'Alacritty'},
-  {key = 'n', name = 'Notion'},
-  {key = 'x', name = 'XCode'},
-  {key = 'i', name = 'Insomnia'},
-  {key = 'k', name = 'Keybase'},
-  {key = 's', name = 'Slack'},
-  {key = 'j', name = 'Jira'},
-  {key = 'v', name = 'Miro'},
-  {key = 'z', name = 'Zoom.us'},
-  {key = 'o', name = 'Obsidian'},
+  { key = "b", name = "Bitwarden" },
+  { key = "e", name = "Vscodium" },
+  { key = "t", name = "Alacritty" },
+  { key = "n", name = "Notion" },
+  { key = "x", name = "XCode" },
+  { key = "i", name = "Insomnia" },
+  { key = "k", name = "Keybase" },
+  { key = "s", name = "Slack" },
+  { key = "j", name = "Jira" },
+  { key = "v", name = "Miro" },
+  { key = "z", name = "Zoom.us" },
+  { key = "o", name = "Obsidian" },
 }
 
 -- app environment keybindings. Bundle `id` is preferred, but application `name` will be ok using ctrl + alt.
 config.apps = {
-  {key = ',', name = 'System Preferences'},
-  {key = '3', name = 'Launchpad'},
-  {key = 'd', name = 'Discord'},
-  {key = 'f', name = 'Figma'},
-  {key = 'e', name = 'Spark'},
-  {key = 'a', name = 'Airtable'},
-  {key = 'b', name = 'Brave Browser'},
-  {key = 'c', name = 'GoogleCalendar'},
-  {key = 'h', name = 'WhatsApp'},
-  {key = 't', name = 'Telegram'},
-  {key = 'm', name = 'Spotify'},
-  {key = 'r', name = 'Reminders'},
-  {key = 'o', name = 'Finder'},
+  { key = ",", name = "System Preferences" },
+  { key = "3", name = "Launchpad" },
+  { key = "d", name = "Discord" },
+  { key = "f", name = "Figma" },
+  { key = "e", name = "Spark" },
+  { key = "a", name = "Airtable" },
+  { key = "b", name = "Brave Browser" },
+  { key = "c", name = "GoogleCalendar" },
+  { key = "h", name = "WhatsApp" },
+  { key = "t", name = "Telegram" },
+  { key = "m", name = "Spotify" },
+  { key = "r", name = "Reminders" },
+  { key = "o", name = "Finder" },
 }
 
 -- misc environment keybindings. Bundle `id` is preferred, but application `name` will be ok using shift + cmd.
 config.misc = {
-  {key = 'b', name = 'Binance'},
+  { key = "b", name = "Binance" },
 }
 
 config.DefaultBrowser = config.browser.brave
 config.devBrowser = config.browser.brave
 config.personalBrowser = config.browser.brave
 config.hangoutsBrowser = config.browser.chrome
-
-package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/hammerspoon/?.lua"
 
 local success, custom_config = pcall(require, "custom")
 if not success then
