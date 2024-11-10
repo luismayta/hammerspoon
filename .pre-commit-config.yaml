@@ -1,6 +1,9 @@
 ci:
   autoupdate_schedule: monthly
 
+default_language_version:
+  node: 18.19.1
+
 default_stages:
   - commit
 exclude: >
@@ -18,7 +21,7 @@ repos:
     rev: v2.2.6
     hooks:
       - id: codespell
-        args: [--ignore-words=.codespell-ignores]
+        args: [--ignore-words=.ci/linters/.codespell-ignores]
         exclude: >
           (?x)^(
             .+\.vendor\/.*$|
