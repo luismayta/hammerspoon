@@ -1,6 +1,6 @@
 -- luacheck: globals hs spoon
 
-local function init(config)
+local function init(_)
   -- disable animations
   hs.window.animationDuration = 0.0
 

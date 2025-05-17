@@ -1,7 +1,10 @@
 -- luacheck: globals hs spoon
+package.path = hs.configdir .. "/src/?.lua;" ..
+               hs.configdir .. "/src/?/init.lua;" ..
+               package.path
+
 local logger = require("hs.logger")
 local log = logger.new("Init")
-
 log.df("Starting Hammerspoon")
 
 local success, speech = pcall(require, "hs.speech")
@@ -15,7 +18,7 @@ local speaker = speech.new()
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.repos.doiken = {
     url = "https://github.com/doiken/Spoons",
-    desc = "Repositorio de cucharas de doiken",
+    desc = "Spoons"
 }
 spoon.SpoonInstall.use_syncinstall = true
 spoon.SpoonInstall:updateAllRepos()

@@ -13,7 +13,7 @@ function hooks.notifyBluetooth(x)
     hs.notify.new({title = 'Bluetooth Device Connected'}):send()
 end
 
-local function init(config)
+local function init(_)
     local log = logger.new("Apps")
 
     local success, spoonInstall = pcall(require, "SpoonInstall")
