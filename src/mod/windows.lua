@@ -1,6 +1,6 @@
 -- luacheck: globals hs spoon
 
-local function init(config)
+local function init(_)
 
   local hotkey = require("core.hotkey")
   local fntools = require("core.functions")

@@ -1,7 +1,7 @@
 -- luacheck: globals hs spoon
 local logger = require("hs.logger")
 
-local function init(config)
+local function init(_)
     local log = logger.new("Apps")
     -- Load SpoonInstall
     local success, spoonInstall = pcall(require, "SpoonInstall")
