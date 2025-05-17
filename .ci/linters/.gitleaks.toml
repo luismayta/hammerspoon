@@ -162,6 +162,7 @@ title = "gitleaks config"
             '''host=HOST''',
             '''--private-key={{.PRIVATE_KEY_FILE}}''',
             '''PASSWORD=XXXXXX''',
+            '''password={password}''',
         ]
 
 [[rules]]

@@ -31,15 +31,19 @@ This is a list of applications that need to be installed previously to enjoy all
 
 ### via curl
 
-`bash -c "$(curl -fsSL https://rebrand.ly/doms02)"`
+```bash
+bash -c "$(curl -fsSL https://rebrand.ly/doms02)"
+```
 
 ### via wget
 
-`bash -c "$(wget https://rebrand.ly/doms02 -O -)"`
+```bash
+bash -c "$(wget https://rebrand.ly/doms02 -O -)"
+```
 
 ## Usage
 
-# How to use this project
+# 🚀 How to use this project
 
 ```bash
 task setup
@@ -72,7 +76,7 @@ Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following co
 
 ## Copyright
 
-Copyright © 2018-2024 [Hadenlabs](https://hadenlabs.com)
+Copyright © 2018-2025 [Hadenlabs](https://hadenlabs.com)
 
 ## Trademarks
 
