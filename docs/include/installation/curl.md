@@ -1,3 +1,5 @@
 ### via curl
 
-`bash -c "$(curl -fsSL https://rebrand.ly/doms02)"`
+```bash
+bash -c "$(curl -fsSL https://rebrand.ly/doms02)"
+```
