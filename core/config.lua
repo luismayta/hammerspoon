@@ -8,7 +8,7 @@ local hotkey = require("core.hotkey")
 
 local config = {
   DnsEmpty = "networksetup -setdnsservers Wi-Fi empty",
-  DnsCloudflare = "networksetup -setdnsservers Wi-Fi 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4",
+  DnsCloudflare = "networksetup -setdnsservers Wi-Fi 127.0.0.1 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4",
 }
 
 -- Displays
