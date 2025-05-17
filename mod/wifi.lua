@@ -10,8 +10,8 @@ local function init(config)
   log.df("SpoonInstall Starting")
   local success, spoonInstall = pcall(require, "SpoonInstall")
   if not success then
-      log.ef("Error: in load SpoonInstall")
-      return
+    log.ef("Error: in load SpoonInstall")
+    return
   end
 
   local Install = spoonInstall
@@ -24,6 +24,14 @@ local function init(config)
         --       hs.notify.show("SSID change", string.format("From '%s' to '%s'", prev_ssid, new_ssid), "")
         --    end
         -- },
+        {
+          to = "EvilHome",
+          fn = function(_, _, _, _)
+            hs.fnutils.partial(fntools.reconfigVolume, 80)
+            hs.execute(settings.DnsEmpty)
+            hs.execute(settings.DnsCloudflare)
+          end,
+        },
         {
           to = "Evilcorp",
           fn = function(_, _, _, _)
@@ -88,7 +96,6 @@ local function init(config)
   })
 
   log.df("SpoonInstall Load Success")
-
 end
 
 return init
