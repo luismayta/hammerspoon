@@ -1,18 +1,9 @@
--- luacheck: globals hs spoon
-local logger = require("hs.logger")
-
-local obj = {}
-
--- debugging
-local log = logger.new("functions", "debug")
-
--- hs.loadSpoon("SpoonInstall")
-local spoon_install = spoon.SpoonInstall
+local M = {}
 
 ---------------------------------------------
 -- OS X isDoNotDisturbEnabled
 ---------------------------------------------
-function obj.isDoNotDisturbEnabled()
+function M.isDoNotDisturbEnabled()
   local command = "defaults -currentHost read com.apple.notificationcenterui doNotDisturb"
 
   local mode, _, _, _ = hs.execute(command)
@@ -23,7 +14,7 @@ end
 ---------------------------------------------
 -- OS X Toggle Status Notification
 ---------------------------------------------
-function obj.toggleDoNotDisturb()
+function M.toggleDoNotDisturb()
   local _, status, type, rc = hs.execute("do-not-disturb toggle", true)
 
   if not (status == true and type == "exit" and rc == 0) then
@@ -42,21 +33,20 @@ end
 ---------------------------------------------
 -- OS X Notification SetStatusNotification
 ---------------------------------------------
-function obj.setStatusNotification(status)
+function M.setStatusNotification(status)
   local script = "do-not-disturb off"
   if status == "enable" then
     script = "do-not-disturb on"
   end
 
   local _, _, _, code = hs.execute(script, true)
-  log:d(code)
   return status
 end
 
 ---------------------------------------------
 -- OS X Notification Clear
 ---------------------------------------------
-function obj.clearNotifications()
+function M.clearNotifications()
   local script = [[
     my closeNotif()
     on closeNotif()
@@ -78,54 +68,9 @@ function obj.clearNotifications()
 
   local response, err = pcall(hs.applescript.applescript(script))
   if err == true then
-    log:d(err)
     error(err)
   end
   return response
 end
 
-function obj.toggleApplication(name)
-  return function()
-    local app = hs.application.find(name)
-    if not app or app:isHidden() then
-      hs.application.launchOrFocus(name)
-    elseif hs.application.frontmostApplication() ~= app then
-      app:activate()
-    end
-  end
-end
-
-function obj.goLeft()
-  local switcher = hs.window.switcher.new()
-  switcher:previous()
-end
-
-function obj.goRight()
-  local switcher = hs.window.switcher.new()
-  switcher:next()
-end
-
---- Reconfigure volume.
--- @name reconfigVolume
--- @param volume number
--- @return null
-function obj.reconfigVolume(volume)
-  hs.audiodevice.defaultOutputDevice():setVolume(volume)
-end
-
---- Install Spoons.
--- @name installSpoons
--- @param spoons list
--- @return null
-function obj.installSpoons(spoons)
-  -- Load those Spoons
-  for _, app in pairs(spoons) do
-    if app.settings then
-      spoon_install:andUse(app.name, app.settings)
-    else
-      spoon_install:andUse(app.name)
-    end
-  end
-end
-
-return obj
+return M
