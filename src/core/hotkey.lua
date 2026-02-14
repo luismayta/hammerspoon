@@ -1,116 +1,99 @@
--- luacheck: globals hs spoon
-local strkit = require("core.strkit")
-local fntools = require("core.functions")
+-- luacheck: globals hs
+local stringUtil = require("core.utils.string")
+local logger = require("core.logger").get("hotkey")
 
-local hotkey = {
-  registeredHotkey = {},
+local Hotkey = {}
+Hotkey.__index = Hotkey
+
+local presets = {
   hyper = { "ctrl", "alt" },
   cmdHyper = { "cmd", "ctrl", "alt" },
-  shift_hyper = { "shift", "cmd" },
+  shiftHyper = { "shift", "cmd" },
 }
 
-function hotkey.bind(mods, key, desc, fn)
+function Hotkey.new(deps)
+  local self = setmetatable({}, Hotkey)
+  self.registered = {}
+  self.functions = deps.functions
+
+  logger.info("[Hotkey] Initialized Hotkey object")
+  return self
+end
+
+function Hotkey:_format(mods, key)
+  local info = ""
+  for _, k in ipairs(mods) do
+    info = info .. (info ~= "" and "+" or "") .. stringUtil.firstUp(k)
+  end
+  return info .. "+" .. stringUtil.firstUp(key)
+end
+
+function Hotkey:bind(mods, key, desc, fn)
+  logger.info("[Hotkey] Attempting to bind key: %s with mods: %s", tostring(key), logger.inspect(mods))
+
+  if not key or (type(key) ~= "string" and type(key) ~= "number") then
+    logger.error("[Hotkey] Invalid key: %s (type %s)", tostring(key), type(key))
+    return
+  end
+
+  if not self.registered then
+    logger.warn("[Hotkey] self.registered is nil, initializing as empty table")
+    self.registered = {}
+  end
+
+  if type(fn) ~= "function" then
+    logger.error("[Hotkey] fn is not a function, got %s", type(fn))
+    return
+  end
+
   hs.hotkey.bind(mods, key, nil, fn)
 
-  local info = ""
-  for _, k in pairs(mods) do
-    info = info .. (info ~= "" and "+" or "") .. strkit.firstUp(k)
-  end
-  info = (info .. "+" .. strkit.firstUp(key))
-
-  table.insert(hotkey.registeredHotkey, {
+  local info = self:_format(mods, key)
+  table.insert(self.registered, {
     key = info,
     desc = desc,
   })
-  hs.printf("[Info] %s -> %s", info, desc)
+
+  logger.info("[Hotkey] Enabled hotkey %s -> %s", info, desc)
 end
 
-function hotkey.bindWithCtrl(key, desc, fn)
-  hotkey.bind({ "CTRL" }, key, desc, fn)
-end
-
-function hotkey.bindWithCmd(key, desc, fn)
-  hotkey.bind({ "CMD" }, key, desc, fn)
-end
-
-function hotkey.bindWithShift(key, desc, fn)
-  hotkey.bind({ "Shift" }, key, desc, fn)
-end
-
-function hotkey.bindWithAlt(key, desc, fn)
-  hotkey.bind({ "Alt" }, key, desc, fn)
-end
-
-function hotkey.bindWithCmdAlt(key, desc, fn)
-  hotkey.bind({ "CMD", "ALT" }, key, desc, fn)
-end
-
-function hotkey.bindWithCtrlCmd(key, desc, fn)
-  hotkey.bind({ "CTRL", "CMD" }, key, desc, fn)
-end
-
-function hotkey.bindWithCtrlCmdAlt(key, desc, fn)
-  hotkey.bind(hotkey.cmdHyper, key, desc, fn)
-end
-
-function hotkey.bindWithCtrlAlt(key, desc, fn)
-  hotkey.bind(hotkey.hyper, key, desc, fn)
-end
-
-function hotkey.bindWithCtrlShift(key, desc, fn)
-  hotkey.bind({ "CTRL", "SHIFT" }, key, desc, fn)
-end
-
-function hotkey.bindWithCtrlShiftCmd(key, desc, fn)
-  hotkey.bind({ "CTRL", "SHIFT", "CMD" }, key, desc, fn)
-end
-
-function hotkey.bindWithCtrlShiftAlt(key, desc, fn)
-  hotkey.bind({ "CTRL", "SHIFT", "ALT" }, key, desc, fn)
-end
-
-function hotkey.bindWithShiftAlt(key, desc, fn)
-  hotkey.bind({ "SHIFT", "ALT" }, key, desc, fn)
-end
-
-function hotkey.bindWithShiftCmd(key, desc, fn)
-  hotkey.bind({ "SHIFT", "CMD" }, key, desc, fn)
-end
-
-function hotkey.bindWithShiftCmdAlt(key, desc, fn)
-  hotkey.bind({ "SHIFT", "CMD", "ALT" }, key, desc, fn)
-end
-
-hotkey.bindWithCtrlCmdAlt("K", "Show HotKeys", function()
-  local allHotKey = ""
-  for _, v in pairs(hotkey.registeredHotkey) do
-    allHotKey = allHotKey .. "▶︎ (" .. v.key .. ") ☞" .. v.desc .. "\n"
+function Hotkey:bindPreset(preset, key, desc, fn)
+  local mods = presets[preset]
+  if not mods then
+    logger.error("[Hotkey] Preset '%s' not found", preset)
+    return
   end
-  hs.dialog.blockAlert("Show Keys", allHotKey, "Close")
-end)
+  self:bind(mods, key, desc, fn)
+end
 
-function hotkey.setApps(apps)
+function Hotkey:showRegistered()
+  if not self.registered or #self.registered == 0 then
+    logger.warn("[Hotkey] No registered hotkeys")
+    return
+  end
+
+  local all = ""
+  for _, v in ipairs(self.registered) do
+    all = all .. "▶︎ (" .. v.key .. ") ☞ " .. v.desc .. "\n"
+  end
+  hs.dialog.blockAlert("Show Keys", all, "Close")
+end
+
+function Hotkey:setApps(apps)
   for _, value in ipairs(apps) do
-    if value.name then
-      hotkey.bindWithCtrlAlt(value.key, "Load", fntools.toggleApplication(value.name))
+    logger.info("[Hotkey] Processing app: %s, key: %s", tostring(value.name), tostring(value.key))
+    if value.name and value.key then
+      self:bindPreset("hyper", value.key, "Load " .. value.name, function()
+        if self.functions and type(self.functions.toggleApplication) == "function" then
+          self.functions.toggleApplication(value.name)
+        else
+          logger.error("[Hotkey] toggleApplication function is missing")
+        end
+      end)
+    else
+      logger.warn("[Hotkey] Skipping app due to missing name or key")
     end
   end
 end
 
-function hotkey.setDevs(devs)
-  for _, value in ipairs(devs) do
-    if value.name then
-      hotkey.bindWithCtrlCmdAlt(value.key, "Load", fntools.toggleApplication(value.name))
-    end
-  end
-end
-
-function hotkey.setMiscs(misc)
-  for _, value in ipairs(misc) do
-    if value.name then
-      hotkey.bindWithShiftCmd(value.key, "Load", fntools.toggleApplication(value.name))
-    end
-  end
-end
-
-return hotkey
+return Hotkey
