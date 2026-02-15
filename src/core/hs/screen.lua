@@ -20,8 +20,30 @@ function M.moveToNextScreen()
 
   local current = win:screen()
   local nextScreen = current:next()
+  if not nextScreen then
+    return
+  end
 
-  if nextScreen then
+  local wasFullscreen = win:isFullScreen()
+
+  if wasFullscreen then
+    win:setFullScreen(false)
+
+    hs.timer.doAfter(0.6, function()
+      if not win or not win:isStandard() then
+        return
+      end
+
+      win:moveToScreen(nextScreen)
+      win:centerOnScreen(nextScreen)
+
+      hs.timer.doAfter(0.3, function()
+        if win and win:isStandard() then
+          win:setFullScreen(true)
+        end
+      end)
+    end)
+  else
     win:moveToScreen(nextScreen)
     win:centerOnScreen(nextScreen)
   end
