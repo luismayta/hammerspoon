@@ -9,8 +9,6 @@
 
 # Commands
 
-## Poetry
-
 ## Taskfile
 
 ### Confluence
