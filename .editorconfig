@@ -1,72 +1,68 @@
+# EditorConfig helps maintain consistent coding styles
+# http://EditorConfig.org
 
-# EditorConfig is awesome: http://EditorConfig.org
-
-
-# top-most EditorConfig file
 root = true
 
-# Unix-style newlines with a newline ending every file
+# Default settings for all files
 [*]
 end_of_line = lf
-insert_final_newline = false
-indent_style = space
-# Set default charset
+insert_final_newline = true
 charset = utf-8
 trim_trailing_whitespace = true
+indent_style = space
 indent_size = 2
 
-# Custom Coding Styles for Java files
+# Java - prefer spaces (4 is common for Java; adjust if your project uses tabs)
 [*.java]
-
-# The other allowed value you can use is space
-indent_style = tab
-
-# You can play with this value and set it to how
-# many characters you want your indentation to be
-indent_size = 2
-
-# Character set to be used in java files.
+indent_style = space
+indent_size = 4
 charset = utf-8
 trim_trailing_whitespace = true
 
-[*.{el}]
-insert_final_newline = false
-
-[*.{el,md,mdx,yml,yaml,js,json,toml,ts,tsx,hcl,tf,graphql,hbs,sh,lua}]
-indent_style = space
-indent_size = 2
-
-[*.{lua}]
-indent_style = space
-indent_size = 2
-
-# 4 space indentation
-[*.{py}]
+# Python - 4 spaces
+[*.py]
 indent_style = space
 indent_size = 4
 
+# Go - use tabs (gofmt uses tabs; no indent_size necessary)
 [*.go]
-indent_size = 2
 indent_style = tab
 
-# Minified JavaScript files shouldn't be changed
-[**.min.js]
-indent_style = ignore
-insert_final_newline = ignore
-
-# Tab indentation (no size specified)
-[Makefile]
-indent_style = tab
-
-# Indentation override for all JS under lib directory
-[*.{el,js,json,md,yml,yaml,tf}]
+# Markdown / MDX - preserve trailing whitespace (used for line breaks in Markdown)
+[*.{md,mdx}]
+trim_trailing_whitespace = false
+insert_final_newline = true
 indent_style = space
 indent_size = 2
 
+# Common web / config / infra files
+[*.{js,ts,tsx,json,yml,yaml,toml,graphql,hcl,tf,hbs,sh,el}]
+indent_style = space
+indent_size = 2
+
+# Lua
+[*.lua]
+indent_style = space
+indent_size = 2
+
+# Makefiles and similar - tabs
+[Makefile]
+indent_style = tab
+
 [*.{make,mk}]
 indent_style = tab
-indent_size  = 4
 
-# Batch files use tabs for indentation
+# Batch files - tabs
 [*.bat]
 indent_style = tab
+
+# Minified files - avoid changing them
+[*.min.js]
+indent_style = ignore
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+[**/*.min.js]
+indent_style = ignore
+insert_final_newline = false
+trim_trailing_whitespace = false

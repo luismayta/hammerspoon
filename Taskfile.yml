@@ -76,7 +76,7 @@ vars:
   PYTHON_VERSION: 3.11.5
   NODE_VERSION: v24.11.1
   GRADLE_VERSION: 8.4.0
-  GOLANG_VERSION: 1.22.4
+  GOLANG_VERSION: 1.24.11
   GIT_IGNORES: python,node,go,zsh,sonar,java,maven,intellij+all,terraform,linux
   COMMIT: $(git rev-parse HEAD)
   RELEASE_DIR: ./release
@@ -136,7 +136,6 @@ tasks:
       - docs:check
 
   readme:
-    run: once
     desc: Generate Readme
     silent: true
     cmds:
@@ -148,7 +147,6 @@ tasks:
       - task: prettier
 
   prettier:
-    run: once
     desc: Execute prettier files
     cmds:
       - task: prettier:all

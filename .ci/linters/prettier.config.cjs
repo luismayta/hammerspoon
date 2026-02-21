@@ -19,6 +19,18 @@ module.exports = {
       }
     },
     {
+      files: "*.{ts,tsx}",
+      options: {
+        arrowParens: "always",
+        printWidth: 100,
+        semi: false,
+        singleQuote: false,
+        tabWidth: 2,
+        trailingComma: "none",
+        quoteProps: "as-needed"
+      }
+    },
+    {
       files: "{*.lua}",
       options: {
         printWidth: 100,

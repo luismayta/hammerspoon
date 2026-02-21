@@ -21,8 +21,10 @@
       "replacement": "{{BASEURL}}/"
     }
   ],
+
   "timeout": "20s",
+  "retryOn429": true,
   "retryCount": 3,
   "fallbackRetryDelay": "30s",
-  "aliveStatusCodes": [200, 206, 202]
+  "aliveStatusCodes": [200, 201, 202, 206]
 }
