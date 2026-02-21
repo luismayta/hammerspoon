@@ -2,10 +2,10 @@
   "baseUrl": "https://github.com/luismayta/hammerspoon",
   "ignorePatterns": [
     {
-      "pattern": "^https://hadenlabs.com"
+      "pattern": "^mailto:.*@hadenlabs\\.com"
     },
     {
-      "pattern": "^mailto:.*@hadenlabs\\.com"
+      "pattern": "^https://github.com/luismayta/hammerspoon/compare"
     },
     {
       "pattern": "^http://localhost"

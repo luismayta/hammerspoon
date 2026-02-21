@@ -76,7 +76,7 @@ Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following co
 
 ## Copyright
 
-Copyright © 2018-2025 [Hadenlabs](https://hadenlabs.com)
+Copyright © 2018-2026 [Hadenlabs](https://hadenlabs.com)
 
 ## Trademarks
 
@@ -89,10 +89,3 @@ The code and styles are licensed under the LGPL-3.0 license [See project license
 ## Don't forget to 🌟 Star 🌟 the repo if you like hammerspoon
 
 [Your feedback is appreciated](https://github.com/luismayta/hammerspoon/issues)
-
-
-<!-- Security scan triggered at 2025-09-02 15:56:41 -->
-
-<!-- Security scan triggered at 2025-09-09 06:02:43 -->
-
-<!-- Security scan triggered at 2025-09-28 16:13:14 -->

@@ -26,6 +26,7 @@ repos:
           - --ignore-words=.ci/linters/.codespell-ignores
         exclude: >
           (?x)^(
+            CHANGELOG.md|
             go.mod|
             go.sum|
             app/ia/datasets\/.*$|
