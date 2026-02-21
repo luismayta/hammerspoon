@@ -32,7 +32,7 @@ config.apps = {
   { mods = { "ctrl", "alt", "cmd" }, key = "t", app = "Ghostty" },
   { mods = { "ctrl", "alt", "cmd" }, key = "x", app = "XCode" },
   { mods = { "ctrl", "alt", "cmd" }, key = "i", app = "Insomnia" },
-  { mods = { "ctrl", "alt", "cmd" }, key = "q", app = "DBeaver" },
+  { mods = { "ctrl", "alt", "cmd" }, key = "s", app = "DBeaver" },
   { mods = { "ctrl", "alt", "cmd" }, key = "k", app = "Keybase" },
   { mods = { "ctrl", "alt", "cmd" }, key = "j", app = "Jira" },
   { mods = { "ctrl", "alt", "cmd" }, key = "m", app = "Miro" },
